@@ -24,10 +24,10 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
             <img 
               src="/logo-principal.svg" 
               alt="CRONIXVERSO" 
-              onError={(e) => { e.currentTarget.src = '/logo-icon.svg'; }}
-              className="h-8 w-auto" 
+              className="h-8 sm:h-9 w-auto drop-shadow-[0_0_10px_rgba(6,182,212,0.25)]" 
             />
           </Link>
+
           <p className="text-slate-400 leading-relaxed">
             O portal definitivo de inteligência artificial, notícias de tecnologia, universo gamer e ciência do futuro.
           </p>

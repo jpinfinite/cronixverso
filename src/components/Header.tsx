@@ -105,20 +105,15 @@ export const Header: React.FC<HeaderProps> = ({
       <header className="sticky top-0 z-40 bg-[#07090e]/95 backdrop-blur-xl border-b border-white/10 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           
-          {/* Logo Cronixverso com Fallback Garantido */}
-          <Link to="/" className="flex items-center space-x-3 group shrink-0">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-[#07090e] rounded-[14px] flex items-center justify-center">
-                <span className="font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 text-lg">C</span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-black text-xl tracking-tight text-white leading-none">
-                Cronix<span className="text-cyan-400">verso</span>
-              </span>
-              <span className="text-[9px] font-mono uppercase tracking-widest text-slate-400 mt-0.5">INTELIGÊNCIA & TECH</span>
-            </div>
+          {/* Logo Cronixverso oficial */}
+          <Link to="/" className="flex items-center group shrink-0">
+            <img 
+              src="/logo-principal.svg" 
+              alt="CRONIXVERSO" 
+              className="h-9 sm:h-10 w-auto group-hover:opacity-90 transition-all drop-shadow-[0_0_12px_rgba(6,182,212,0.35)]" 
+            />
           </Link>
+
 
           {/* Navegação Principal Padronizada e Alinhada */}
           <nav className="hidden xl:flex items-center space-x-1 text-xs font-semibold text-slate-300">
