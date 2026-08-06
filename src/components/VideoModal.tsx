@@ -99,6 +99,23 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
 
           <p className="text-xs text-slate-300 leading-relaxed">{video.desc}</p>
 
+          {/* Aviso Fallback para garantir funcionamento 100% no YouTube */}
+          <div className="bg-gradient-to-r from-red-500/10 to-purple-500/10 border border-red-500/20 rounded-2xl p-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-300">
+            <div className="flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping shrink-0" />
+              <span>Assista diretamente no canal oficial do <strong>{video.badge || 'YouTube'}</strong></span>
+            </div>
+            <a
+              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-red-600 hover:bg-red-500 text-white font-extrabold px-4 py-1.5 rounded-full flex items-center space-x-1.5 transition-all shadow-md shadow-red-600/30 shrink-0"
+            >
+              <span>Abrir no YouTube</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
           <div className="flex items-center space-x-4 pt-2 text-[11px] text-slate-400 border-t border-white/5">
             <span className="flex items-center">
               <Eye className="w-3.5 h-3.5 mr-1 text-cyan-400" /> {video.views} visualizações
@@ -107,6 +124,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
               <Sparkles className="w-3.5 h-3.5 mr-1" /> Conteúdo Curado CRONIXVERSO
             </span>
           </div>
+
         </div>
       </div>
     </div>
