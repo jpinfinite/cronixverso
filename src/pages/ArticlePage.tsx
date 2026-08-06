@@ -15,6 +15,10 @@ import {
 import { ALL_ARTICLES } from '../data/articles';
 import { AdSensePlaceholder } from '../components/AdSensePlaceholder';
 import { MarkdownRenderer } from '../components/MarkdownRenderer';
+import { ArticleAudioPlayer } from '../components/ArticleAudioPlayer';
+import { ArticleAISummary } from '../components/ArticleAISummary';
+import { ArticleComments } from '../components/ArticleComments';
+
 
 interface ArticlePageProps {
   savedArticleIds?: string[];
@@ -198,6 +202,20 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
         />
       </div>
 
+      {/* Player de Áudio (Ouvir Matéria Narrada em Português) */}
+      <ArticleAudioPlayer 
+        title={article.title} 
+        text={`${article.excerpt}. ${article.content}`} 
+      />
+
+      {/* Resumo Inteligente por IA (TL;DR) */}
+      <ArticleAISummary 
+        title={article.title} 
+        excerpt={article.excerpt} 
+        content={article.content} 
+      />
+
+
       {/* Table of Contents (Índice de Seções da Matéria) */}
       {tocHeadings.length > 0 && (
         <div className="bg-[#0f1420] border border-cyan-500/30 rounded-2xl p-5 mb-10 space-y-3">
@@ -278,6 +296,10 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
         </section>
       )}
 
+      {/* Módulo de Comentários & Reações da Comunidade */}
+      <ArticleComments articleId={article.id} />
+
     </article>
+
   );
 };
