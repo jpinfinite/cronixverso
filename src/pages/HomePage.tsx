@@ -325,9 +325,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* Seção Cronix TV: Vídeos & Dicas Tech Brasileiras */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="videos" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <VideoSection />
       </section>
+
 
 
       {/* Hub de Ferramentas de IA */}

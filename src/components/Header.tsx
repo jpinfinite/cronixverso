@@ -144,7 +144,14 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Layers className="w-4 h-4 text-emerald-400" /> Ciência
             </button>
+            <a 
+              href="#videos"
+              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 font-bold text-cyan-400"
+            >
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" /> Cronix TV
+            </a>
           </nav>
+
 
           {/* Ações & Busca & Tema & Salvos */}
           <div className="flex items-center space-x-3 sm:space-x-4">

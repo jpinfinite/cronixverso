@@ -7,49 +7,50 @@ import { VideoModal, type VideoItem } from './VideoModal';
 export const VIDEOS_DATABASE: VideoItem[] = [
   {
     id: 'vid-1',
-    title: 'A IA Vai Substituir os Programadores? A Verdade que Ninguém Te Conta em 2026',
-    desc: 'Análise profunda sobre a evolução do GPT, Claude e Cursor IDE, o novo papel do desenvolvedor e como se posicionar no mercado.',
+    title: 'O Fim da Programação com Inteligência Artificial: Minha Opinião DEFINITIVA',
+    desc: 'Filipe Deschamps analisa o impacto profundo das IAs geradoras de código na carreira dos desenvolvedores e o futuro da profissão.',
     category: 'Inteligência Artificial',
-    duration: '15:42',
-    views: '342.1K',
-    youtubeId: 'Wn2jJz8XhNo',
-    thumbnail: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+    duration: '14:35',
+    views: '385.4K',
+    youtubeId: 'wXWzOaFv7yQ',
+    thumbnail: 'https://img.youtube.com/vi/wXWzOaFv7yQ/hqdefault.jpg',
     badge: 'Filipe Deschamps'
   },
   {
     id: 'vid-2',
-    title: 'NVIDIA RTX 5090: O Teste Definitivo de Benchmark, DLSS 4 e 4K NATIVO',
-    desc: 'Testamos a nova top de linha da NVIDIA em jogos pesados com Ray Tracing e Path Tracing ativados. Vale o investimento?',
-    category: 'Hardware & GPUs',
-    duration: '22:15',
-    views: '512.8K',
-    youtubeId: 't4zYhU0w31A',
-    thumbnail: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80',
-    badge: 'Adrenaline'
+    title: 'A Inteligência Artificial Vai SUBSTITUIR os Programadores? (Análise Completa)',
+    desc: 'O time do Código Fonte TV desmistifica o uso de IAs em produção, limitações técnicas e o novo papel dos engenheiros de software.',
+    category: 'Desenvolvimento',
+    duration: '19:12',
+    views: '492.1K',
+    youtubeId: '5Vz1ySgR4q8',
+    thumbnail: 'https://img.youtube.com/vi/5Vz1ySgR4q8/hqdefault.jpg',
+    badge: 'Código Fonte TV'
   },
   {
     id: 'vid-3',
-    title: 'Como a Inteligência Artificial Está Mudar o Linux e o Código Aberto',
-    desc: 'Explorando assistentes de terminal com IA local, Ollama, DeepSeek e a revolução dos agentes open-source no ecossistema dev.',
+    title: 'Machine Learning e Inteligência Artificial na Prática: Tutorial & Conceitos',
+    desc: 'Diolinux explora ferramentas de aprendizado de máquina, IA local no Linux, modelos de linguagem e automações para devs.',
     category: 'Dev & Linux',
-    duration: '18:30',
-    views: '189.5K',
-    youtubeId: 'L_LUpnjgPso',
-    thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80',
+    duration: '16:50',
+    views: '215.8K',
+    youtubeId: 'mD2s0E_W364',
+    thumbnail: 'https://img.youtube.com/vi/mD2s0E_W364/hqdefault.jpg',
     badge: 'Diolinux'
   },
   {
     id: 'vid-4',
-    title: 'O Fantástico Avanço dos Computadores Quânticos e o Futuro do Universo',
-    desc: 'Como os supercomputadores de qubits e a inteligência artificial estão decifrando os maiores mistérios da física moderna.',
-    category: 'Ciência & Espaço',
-    duration: '19:40',
-    views: '420.3K',
-    youtubeId: 'QuR969uMICM',
-    thumbnail: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80',
+    title: 'Lembra Daquela I.A. Que Programava Sozinha? Então...',
+    desc: 'Pedro Loos (Ciência Todo Dia) e convidados exploram as fronteiras do aprendizado de máquina, redes neurais e limites computacionais.',
+    category: 'Ciência & Tecnologia',
+    duration: '18:40',
+    views: '530.9K',
+    youtubeId: 'N_u4eP9Hq40',
+    thumbnail: 'https://img.youtube.com/vi/N_u4eP9Hq40/hqdefault.jpg',
     badge: 'Ciência Todo Dia'
   }
 ];
+
 
 
 export const VideoSection: React.FC = () => {
