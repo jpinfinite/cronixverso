@@ -101,8 +101,9 @@ export const InstitutionalPage: React.FC = () => {
               </div>
               <h4 className="font-bold text-white text-base">Leitura Aprofundada</h4>
               <p className="text-slate-400 text-xs leading-relaxed">
-                Artigos completos de 2.500+ palavras com análises de código, arquitetura e telemetria real.
+                Artigos completos com análises profundas de código, arquitetura e telemetria real.
               </p>
+
             </div>
 
             <div className="rounded-2xl bg-[#07090e]/80 border border-white/10 p-5 space-y-2">

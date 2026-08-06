@@ -8956,11 +8956,19 @@ import { ARTICLES_PART3 } from './articles_part3';
 import { ARTICLES_PART4 } from './articles_part4';
 import { ARTICLES_PART5 } from './articles_part5';
 
-export const ALL_ARTICLES: Article[] = [
+const RAW_ARTICLES: Article[] = [
   ...ARTICLES_DATABASE,
   ...ARTICLES_PART2,
   ...ARTICLES_PART3,
   ...ARTICLES_PART4,
   ...ARTICLES_PART5
 ];
+
+export const ALL_ARTICLES: Article[] = RAW_ARTICLES.map(art => ({
+  ...art,
+  readTime: art.readTime.replace(/\s*\([\d.,]+\s*palavras\)/gi, '').trim(),
+  excerpt: art.excerpt.replace(/de mais de \d+[\d.,]* palavras/gi, ''),
+  content: art.content ? art.content.replace(/de mais de \d+[\d.,]* palavras/gi, '') : art.content
+}));
+
 
