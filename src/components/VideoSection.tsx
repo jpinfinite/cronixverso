@@ -27,8 +27,8 @@ export const VIDEOS_DATABASE: VideoItem[] = [
     category: 'Humor & Dev',
     duration: '14:35',
     views: '385.4K',
-    youtubeId: 'N_u4eP9Hq40',
-    thumbnail: 'https://img.youtube.com/vi/N_u4eP9Hq40/hqdefault.jpg',
+    youtubeId: 'wXWzOaFv7yQ',
+    thumbnail: 'https://img.youtube.com/vi/wXWzOaFv7yQ/hqdefault.jpg',
     badge: 'Mano Deyvin'
   },
   {
@@ -38,8 +38,8 @@ export const VIDEOS_DATABASE: VideoItem[] = [
     category: 'Programação & IA',
     duration: '19:12',
     views: '492.1K',
-    youtubeId: '5Vz1ySgR4q8',
-    thumbnail: 'https://img.youtube.com/vi/5Vz1ySgR4q8/hqdefault.jpg',
+    youtubeId: 'L1T8F0M8eYg',
+    thumbnail: 'https://img.youtube.com/vi/L1T8F0M8eYg/hqdefault.jpg',
     badge: 'Matheus Battisti'
   },
   {
@@ -49,8 +49,8 @@ export const VIDEOS_DATABASE: VideoItem[] = [
     category: 'Hardware & Dicas PC',
     duration: '16:50',
     views: '280.5K',
-    youtubeId: 'mD2s0E_W364',
-    thumbnail: 'https://img.youtube.com/vi/mD2s0E_W364/hqdefault.jpg',
+    youtubeId: '3aW3u1y7iQE',
+    thumbnail: 'https://img.youtube.com/vi/3aW3u1y7iQE/hqdefault.jpg',
     badge: 'Xerife Tech'
   },
   {
@@ -60,8 +60,8 @@ export const VIDEOS_DATABASE: VideoItem[] = [
     category: 'Mercado & Tech',
     duration: '18:40',
     views: '320.9K',
-    youtubeId: 'wXWzOaFv7yQ',
-    thumbnail: 'https://img.youtube.com/vi/wXWzOaFv7yQ/hqdefault.jpg',
+    youtubeId: 'k5E21F15LTY',
+    thumbnail: 'https://img.youtube.com/vi/k5E21F15LTY/hqdefault.jpg',
     badge: 'O Bobo de Wall Street'
   },
   {
@@ -82,8 +82,8 @@ export const VIDEOS_DATABASE: VideoItem[] = [
     category: 'IA Financeira & Quant',
     duration: '21:10',
     views: '164.8K',
-    youtubeId: 'wXWzOaFv7yQ',
-    thumbnail: 'https://img.youtube.com/vi/wXWzOaFv7yQ/hqdefault.jpg',
+    youtubeId: '5Vz1ySgR4q8',
+    thumbnail: 'https://img.youtube.com/vi/5Vz1ySgR4q8/hqdefault.jpg',
     badge: 'Quant Brasil'
   },
   {
@@ -104,11 +104,12 @@ export const VIDEOS_DATABASE: VideoItem[] = [
     category: 'Games & Análise',
     duration: '16:15',
     views: '210.4K',
-    youtubeId: 't4zYhU0w31A',
-    thumbnail: 'https://img.youtube.com/vi/t4zYhU0w31A/hqdefault.jpg',
+    youtubeId: 'mD2s0E_W364',
+    thumbnail: 'https://img.youtube.com/vi/mD2s0E_W364/hqdefault.jpg',
     badge: 'FireMythX'
   }
 ];
+
 
 export const VideoSection: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);

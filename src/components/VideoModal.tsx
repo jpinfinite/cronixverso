@@ -58,16 +58,18 @@ export const VideoModal: React.FC<VideoModalProps> = ({ video, onClose }) => {
           </button>
         </div>
 
-        {/* Player de Vídeo Responsivo (YouTube Embed) */}
+        {/* Player de Vídeo Responsivo (YouTube Embed Oficial) */}
         <div className="relative aspect-video w-full bg-slate-950">
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+            src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`}
             title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             className="w-full h-full border-0"
           />
         </div>
+
 
         {/* Informações e Detalhes do Vídeo */}
         <div className="p-6 space-y-3">
