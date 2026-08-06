@@ -3,6 +3,8 @@ import { X, Sparkles, Send, CheckCircle2 } from 'lucide-react';
 import { GoogleAuthButton } from './GoogleAuthButton';
 
 
+import { sendGAEvent } from '../utils/analytics';
+
 export const NewsletterModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
@@ -25,11 +27,13 @@ export const NewsletterModal: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    sendGAEvent('subscribe_newsletter', 'conversion', email);
     setSubscribed(true);
     setTimeout(() => {
       handleClose();
     }, 2500);
   };
+
 
   if (!isOpen) return null;
 

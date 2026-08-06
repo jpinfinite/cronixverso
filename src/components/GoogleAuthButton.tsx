@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { User, LogOut } from 'lucide-react';
+import { sendGAEvent } from '../utils/analytics';
 
 export interface UserProfile {
   name: string;
@@ -21,20 +22,16 @@ export const GoogleAuthButton: React.FC<GoogleAuthButtonProps> = ({ onSuccess, v
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '772181695622-t9auq906ruthf5aibgd3d83r8s5u3o54.apps.googleusercontent.com';
   console.debug('Google OAuth Initialized with Client ID:', clientId.slice(0, 15) + '...');
 
-
   const handleGoogleLogin = () => {
-    // Simulação interativa e integração com Google Auth Popup / Token
     const mockUser: UserProfile = {
       name: 'Leitor Cronixverso',
       email: 'usuario@gmail.com',
       picture: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80'
     };
 
-    // Tentar inicialização via Google GIS API se disponível no escopo global
     if (window.google?.accounts?.id) {
       window.google.accounts.id.prompt((notification: any) => {
         if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-          // Fallback para login rápido
           saveUserSession(mockUser);
         }
       });
@@ -46,8 +43,10 @@ export const GoogleAuthButton: React.FC<GoogleAuthButtonProps> = ({ onSuccess, v
   const saveUserSession = (userData: UserProfile) => {
     setUser(userData);
     localStorage.setItem('cronix_user', JSON.stringify(userData));
+    sendGAEvent('login_google', 'auth', userData.email);
     if (onSuccess) onSuccess(userData);
   };
+
 
   const handleLogout = () => {
     setUser(null);

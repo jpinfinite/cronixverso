@@ -1,13 +1,30 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { ArticlePage } from './pages/ArticlePage';
 import { InstitutionalPage } from './pages/InstitutionalPage';
 import { NewsletterModal } from './components/NewsletterModal';
+import { initGA, sendPageView } from './utils/analytics';
+
+// Componente para escutar navegações e enviar rastreamento para o Google Analytics
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  useEffect(() => {
+    sendPageView(location.pathname + location.search);
+  }, [location]);
+
+  return null;
+}
 
 export function App() {
+
   const [activeTab, setActiveTab] = useState<'todos' | 'ia' | 'games' | 'ciencia' | 'hardware' | 'salvos'>('todos');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -37,7 +54,9 @@ export function App() {
 
   return (
     <BrowserRouter>
+      <AnalyticsTracker />
       <div className="min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500 selection:text-black flex flex-col justify-between">
+
         
         {/* Header Compartilhado */}
         <Header 
