@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 import { ALL_ARTICLES } from '../data/articles';
 import { TechComparator } from '../components/TechComparator';
+import { VideoSection } from '../components/VideoSection';
+
 
 const AI_TOOLS_DIRECTORY = [
   {
@@ -321,6 +323,12 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <TechComparator />
       </section>
+
+      {/* Seção Cronix TV: Vídeos & Dicas Tech Brasileiras */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <VideoSection />
+      </section>
+
 
       {/* Hub de Ferramentas de IA */}
       <section id="ferramentas" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
