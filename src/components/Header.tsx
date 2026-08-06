@@ -102,59 +102,77 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Header Principal */}
-      <header className="sticky top-0 z-40 bg-[#07090e]/90 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-[#07090e]/95 backdrop-blur-xl border-b border-white/10 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           
-          {/* Logo Cronixverso */}
-          <Link to="/" className="flex items-center group">
-            <img 
-              src="/logo-principal.svg" 
-              alt="CRONIXVERSO" 
-              onError={(e) => { e.currentTarget.src = '/logo-icon.svg'; }}
-              className="h-9 w-auto group-hover:opacity-90 transition-opacity" 
-            />
+          {/* Logo Cronixverso com Fallback Garantido */}
+          <Link to="/" className="flex items-center space-x-3 group shrink-0">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+              <div className="w-full h-full bg-[#07090e] rounded-[14px] flex items-center justify-center">
+                <span className="font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 text-lg">C</span>
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display font-black text-xl tracking-tight text-white leading-none">
+                Cronix<span className="text-cyan-400">verso</span>
+              </span>
+              <span className="text-[9px] font-mono uppercase tracking-widest text-slate-400 mt-0.5">INTELIGÊNCIA & TECH</span>
+            </div>
           </Link>
 
-          {/* Navegação Principal */}
-          <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
-            <Link to="/" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-              <Flame className="w-4 h-4 text-amber-400" /> Destaques
+          {/* Navegação Principal Padronizada e Alinhada */}
+          <nav className="hidden xl:flex items-center space-x-1 text-xs font-semibold text-slate-300">
+            <Link 
+              to="/" 
+              className="px-3 py-2 rounded-full hover:bg-white/5 hover:text-cyan-400 transition-all flex items-center gap-1.5"
+            >
+              <Flame className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>Destaques</span>
             </Link>
+
             <button 
               onClick={() => handleCategoryClick('ia')}
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="px-3 py-2 rounded-full hover:bg-white/5 hover:text-cyan-400 transition-all flex items-center gap-1.5"
             >
-              <Bot className="w-4 h-4 text-cyan-400" /> Notícias & IA
+              <Bot className="w-4 h-4 text-cyan-400 shrink-0" />
+              <span>Notícias & IA</span>
             </button>
+
             <button 
               onClick={() => handleCategoryClick('games')}
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="px-3 py-2 rounded-full hover:bg-white/5 hover:text-cyan-400 transition-all flex items-center gap-1.5"
             >
-              <Gamepad2 className="w-4 h-4 text-purple-400" /> Games
+              <Gamepad2 className="w-4 h-4 text-purple-400 shrink-0" />
+              <span>Games</span>
             </button>
+
             <button 
               onClick={() => handleCategoryClick('hardware')}
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="px-3 py-2 rounded-full hover:bg-white/5 hover:text-cyan-400 transition-all flex items-center gap-1.5"
             >
-              <Cpu className="w-4 h-4 text-indigo-400" /> Hardware
+              <Cpu className="w-4 h-4 text-indigo-400 shrink-0" />
+              <span>Hardware</span>
             </button>
+
             <button 
               onClick={() => handleCategoryClick('ciencia')}
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="px-3 py-2 rounded-full hover:bg-white/5 hover:text-cyan-400 transition-all flex items-center gap-1.5"
             >
-              <Layers className="w-4 h-4 text-emerald-400" /> Ciência
+              <Layers className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>Ciência</span>
             </button>
+
             <a 
               href="#videos"
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 font-bold text-cyan-400"
+              className="px-3 py-2 rounded-full bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-all flex items-center gap-1.5 font-bold"
             >
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" /> Cronix TV
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping shrink-0" />
+              <span>Cronix TV</span>
             </a>
           </nav>
 
-
-          {/* Ações & Busca & Tema & Salvos */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
+          {/* Ações & Busca & Tema & Salvos & Google Auth */}
+          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
             
             {/* Botão Meus Salvos */}
             <button 
@@ -164,7 +182,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Bookmark className="w-4 h-4" />
               {savedCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-cyan-500 text-black font-extrabold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-cyan-500 text-black font-extrabold text-[10px] w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
                   {savedCount}
                 </span>
               )}
@@ -180,7 +198,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             {/* Campo de Busca */}
-            <form onSubmit={handleSearchSubmit} className="relative hidden sm:block w-40 lg:w-60">
+            <form onSubmit={handleSearchSubmit} className="relative hidden md:block w-40 lg:w-48 xl:w-56">
               <input 
                 type="text" 
                 placeholder="Buscar notícias, IA..."
@@ -204,7 +222,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             <a 
               href="#newsletter"
-              className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-semibold text-xs px-4 py-2.5 rounded-full hidden sm:flex items-center space-x-1.5 transition-all shadow-md shadow-cyan-500/20"
+              className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-extrabold text-xs px-4 py-2.5 rounded-full hidden sm:flex items-center space-x-1.5 transition-all shadow-md shadow-cyan-500/20"
             >
               <span>Newsletter</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -213,6 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </header>
+
     </>
   );
 };
