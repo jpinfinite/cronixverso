@@ -12,6 +12,8 @@ import {
   Moon,
   Bookmark
 } from 'lucide-react';
+import { GoogleAuthButton } from './GoogleAuthButton';
+
 
 interface HeaderProps {
   searchTerm: string;
@@ -191,6 +193,8 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </form>
 
+            <GoogleAuthButton variant="header" />
+
             <a 
               href="#newsletter"
               className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-semibold text-xs px-4 py-2.5 rounded-full hidden sm:flex items-center space-x-1.5 transition-all shadow-md shadow-cyan-500/20"
@@ -198,6 +202,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span>Newsletter</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
+
           </div>
         </div>
       </header>

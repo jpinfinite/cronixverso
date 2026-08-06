@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Sparkles, Send, CheckCircle2 } from 'lucide-react';
+import { GoogleAuthButton } from './GoogleAuthButton';
+
 
 export const NewsletterModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,23 +69,41 @@ export const NewsletterModal: React.FC = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-3 pt-2">
-              <input 
-                type="email"
-                required
-                placeholder="Seu melhor e-mail..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#07090e] border border-white/15 rounded-full px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+            <div className="pt-2 space-y-3">
+              <GoogleAuthButton 
+                variant="modal" 
+                onSuccess={(usr) => {
+                  setEmail(usr.email);
+                  setSubscribed(true);
+                  setTimeout(() => handleClose(), 2500);
+                }}
               />
-              <button 
-                type="submit"
-                className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs py-3 rounded-full flex items-center justify-center space-x-1.5 transition-all shadow-lg shadow-cyan-500/25"
-              >
-                <span>Inscrever-me Gratuitamente</span>
-                <Send className="w-3.5 h-3.5" />
-              </button>
-            </form>
+
+              <div className="flex items-center space-x-2 text-[10px] text-slate-500 uppercase tracking-widest my-2">
+                <div className="flex-1 h-px bg-white/10" />
+                <span>ou via e-mail</span>
+                <div className="flex-1 h-px bg-white/10" />
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <input 
+                  type="email"
+                  required
+                  placeholder="Seu melhor e-mail..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-[#07090e] border border-white/15 rounded-full px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                />
+                <button 
+                  type="submit"
+                  className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs py-3 rounded-full flex items-center justify-center space-x-1.5 transition-all shadow-lg shadow-cyan-500/25"
+                >
+                  <span>Inscrever-me Gratuitamente</span>
+                  <Send className="w-3.5 h-3.5" />
+                </button>
+              </form>
+            </div>
+
 
             <p className="text-[10px] text-slate-500">Sem spam. Cancele quando quiser com 1 clique.</p>
           </>
