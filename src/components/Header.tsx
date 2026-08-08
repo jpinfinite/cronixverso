@@ -12,7 +12,8 @@ import {
   Moon,
   Bookmark,
   Menu,
-  X
+  X,
+  Sparkles
 } from 'lucide-react';
 import { GoogleAuthButton } from './GoogleAuthButton';
 
@@ -163,6 +164,14 @@ export const Header: React.FC<HeaderProps> = ({
               <Layers className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Ciência</span>
             </button>
+
+            <Link 
+              to="/ferramentas-ia" 
+              className="px-3 py-2 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 transition-all flex items-center gap-1.5 font-mono font-bold"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+              <span>Ferramentas IA</span>
+            </Link>
 
             <a 
               href="#videos"

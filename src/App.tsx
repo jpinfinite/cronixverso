@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { ArticlePage } from './pages/ArticlePage';
 import { InstitutionalPage } from './pages/InstitutionalPage';
+import { AIToolsDirectoryPage } from './pages/AIToolsDirectoryPage';
 import { NewsletterModal } from './components/NewsletterModal';
 import { initGA, sendPageView } from './utils/analytics';
 
@@ -57,7 +58,6 @@ export function App() {
       <AnalyticsTracker />
       <div className="min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500 selection:text-black flex flex-col justify-between">
 
-        
         {/* Header Compartilhado */}
         <Header 
           searchTerm={searchTerm} 
@@ -92,6 +92,10 @@ export function App() {
               } 
             />
             <Route 
+              path="/ferramentas-ia" 
+              element={<AIToolsDirectoryPage />} 
+            />
+            <Route 
               path="/sobre" 
               element={<InstitutionalPage />} 
             />
@@ -107,19 +111,16 @@ export function App() {
               path="/privacidade" 
               element={<InstitutionalPage />} 
             />
-            <Route 
-              path="*" 
-              element={<Navigate to="/" replace />} 
-            />
+            {/* Fallback para rotas desconhecidas */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 
-        {/* Footer Compartilhado */}
-        <Footer onSelectCategory={(cat) => setActiveTab(cat)} />
-
-        {/* Modal Lead Magnet de Newsletter */}
+        {/* Modal de Inscrição em Newsletter */}
         <NewsletterModal />
 
+        {/* Rodapé Compartilhado */}
+        <Footer />
       </div>
     </BrowserRouter>
   );
