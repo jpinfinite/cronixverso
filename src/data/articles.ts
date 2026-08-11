@@ -4,7 +4,7 @@ export type { Article };
 export const ARTICLES_DATABASE: Article[] = [
   {
     id: 'cronix-new-1',
-    category: 'IA & Agentes',
+    category: 'IA',
     title: 'O Guia Definitivo dos Agentes Autônomos de IA em 2026: De Assistentes a Trabalhadores Digitais',
     excerpt: 'Descubra como os agentes autônomos evoluíram de simples chatbots para trabalhadores digitais capazes de planejar, codificar e executar tarefas complexas sem supervisão.',
     author: 'Jonatha Pereira',
@@ -34,7 +34,7 @@ Entre os principais frameworks de orquestração utilizados em 2026 estão o **H
   },
   {
     id: 'cronix-new-2',
-    category: 'Open Source',
+    category: 'IA',
     title: 'DeepSeek e a Revolução Open Source: Como Modelos Abertos Estão Desafiando os Gigantes Tech',
     excerpt: 'Análise profunda da arquitetura do DeepSeek-V3 e R1, a eficiência no consumo de tokens e a democratização dos modelos abertos de inteligência artificial.',
     author: 'Jonatha Pereira',
@@ -56,7 +56,7 @@ Com uma arquitetura inovadora baseada em **Mixture-of-Experts (MoE)** e otimiza�
   },
   {
     id: 'cronix-new-3',
-    category: 'Automação',
+    category: 'IA',
     title: 'Automação sem Código com n8n + AI: Como Construir Pipelines de Produtividade Inteligentes',
     excerpt: 'Aprenda a conectar os nós do n8n com APIs de Inteligência Artificial para criar fluxos de automação de e-mails, relatórios e postagens sem programar.',
     author: 'Jonatha Pereira',

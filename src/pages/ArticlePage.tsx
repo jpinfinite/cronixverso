@@ -15,7 +15,7 @@ import {
 import { ALL_ARTICLES } from '../data/articles';
 import { AdSensePlaceholder } from '../components/AdSensePlaceholder';
 import { MarkdownRenderer } from '../components/MarkdownRenderer';
-import { TransmissionSchema, BreadcrumbSchema, FoundationSchema, FAQSchema } from '../components/SchemaMarkup';
+import { TransmissionSchema, BreadcrumbSchema, FoundationSchema } from '../components/SchemaMarkup';
 import { ArticleAudioPlayer } from '../components/ArticleAudioPlayer';
 import { ArticleAISummary } from '../components/ArticleAISummary';
 import { ArticleComments } from '../components/ArticleComments';
