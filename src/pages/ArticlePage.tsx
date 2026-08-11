@@ -15,6 +15,7 @@ import {
 import { ALL_ARTICLES } from '../data/articles';
 import { AdSensePlaceholder } from '../components/AdSensePlaceholder';
 import { MarkdownRenderer } from '../components/MarkdownRenderer';
+import { TransmissionSchema, BreadcrumbSchema, FoundationSchema, FAQSchema } from '../components/SchemaMarkup';
 import { ArticleAudioPlayer } from '../components/ArticleAudioPlayer';
 import { ArticleAISummary } from '../components/ArticleAISummary';
 import { ArticleComments } from '../components/ArticleComments';
@@ -43,7 +44,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
     if (article) {
       document.title = `${article.title} | CRONIXVERSO`;
     } else {
-      document.title = 'Artigo não encontrado | CRONIXVERSO';
+      document.title = 'Transmissão Não Encontrada | CRONIXVERSO';
     }
 
     const handleScroll = () => {
@@ -62,9 +63,9 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
         <BookOpen className="w-16 h-16 text-slate-500 mx-auto mb-4" />
-        <h1 className="text-3xl font-extrabold text-white mb-2">Artigo Não Encontrado</h1>
+        <h1 className="text-3xl font-extrabold text-white mb-2">Transmissão Não Encontrada</h1>
         <p className="text-slate-400 text-sm mb-6">
-          O artigo solicitado não existe ou foi movido para outra categoria.
+          A transmissão solicitada não existe ou foi movida para outra categoria.
         </p>
         <Link 
           to="/" 
@@ -77,19 +78,19 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
     );
   }
 
-  // Extrair Seções para o Índice (Table of Contents)
+  // Extrair Seções para o Índice (Table of Contents) — usando "índice de leitura"
   const tocHeadings = article.content 
     ? article.content.split('\n').filter(line => line.startsWith('### '))
     : [];
 
-  // Encontrar artigos relacionados
+  // Encontrar transmissões relacionadas — registros conexos
   const relatedArticles = ALL_ARTICLES.filter((item) => {
     if (item.id === article.id) return false;
     if (article.relatedIds && article.relatedIds.includes(item.id)) return true;
     return item.category === article.category;
   }).slice(0, 3);
 
-  // Dividir o conteúdo em 2 metadas para o AdSense
+  // Dividir o conteúdo em 2 metades para o AdSense
   const blocks = article.content ? article.content.split(/\n\n+/) : [article.excerpt];
   const halfIndex = Math.ceil(blocks.length / 2);
   const firstHalfText = blocks.slice(0, halfIndex).join('\n\n');
@@ -104,12 +105,34 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
       }).catch(() => {});
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert('Link do artigo copiado para a área de transferência!');
+      alert('Link do registro copiado para a área de transferência!');
     }
   };
 
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative">
+    <>
+      {/* Foundation Schema for site-wide organization */}
+      <FoundationSchema />
+      
+      {/* Transmission Article Schema using CRONIX terminology */}
+      <TransmissionSchema
+        headline={article.title}
+        description={article.excerpt}
+        datePublished={article.date}
+        author={{ name: 'Fundação CRONIX', role: 'Transmissor da Fundação' }}
+        image={article.image}
+        url={window.location.href}
+        transmissionCategory={article.category}
+      />
+
+      {/* Breadcrumb Schema for navigation context */}
+      <BreadcrumbSchema items={[
+        { name: 'Início', url: 'https://cronixverso.com.br/' },
+        { name: article.category, url: 'https://cronixverso.com.br/' },
+        { name: article.title, url: window.location.href },
+      ]} />
+
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative">
       
       {/* Barra de Progresso de Leitura Fixa no Topo */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-[#0b0f19] z-50">
@@ -147,11 +170,11 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
           }`}
         >
           <Bookmark className="w-3.5 h-3.5" />
-          <span>{isSaved ? 'Salvo em Meus Artigos' : 'Salvar para Ler Mais Tarde'}</span>
+          <span>{isSaved ? 'Salvo em Meus Registros' : 'Salvar para Ler Mais Tarde'}</span>
         </button>
       </div>
 
-      {/* Header do Artigo */}
+      {/* Header do Registro — using "registro" terminology */}
       <header className="space-y-4 mb-8">
         <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
           <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 px-3 py-1 rounded-full font-bold uppercase tracking-wider">
@@ -178,18 +201,18 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
 
         {/* Botão de Compartilhamento */}
         <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
-          <span className="text-slate-400">Publicado originalmente no <strong>CRONIXVERSO</strong></span>
+          <span className="text-slate-400">Transmissão original da <strong>Fundação CRONIX</strong></span>
           <button 
             onClick={handleShare}
             className="flex items-center space-x-1.5 bg-white/5 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/30 px-4 py-2 rounded-full transition-all"
           >
             <Share2 className="w-3.5 h-3.5" />
-            <span>Compartilhar</span>
+            <span>Compartilhar Registro</span>
           </button>
         </div>
       </header>
 
-      {/* AdSense Placement 1: Topo do Artigo */}
+      {/* AdSense Placement 1: Topo do Registro */}
       <AdSensePlaceholder slotId="ads-top-article" format="horizontal" />
 
       {/* Imagem de Capa */}
@@ -202,25 +225,24 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
         />
       </div>
 
-      {/* Player de Áudio (Ouvir Matéria Narrada em Português) */}
+      {/* Player de Áudio (Ouvir Transmissão Narrada) */}
       <ArticleAudioPlayer 
         title={article.title} 
-        text={`${article.excerpt}. ${article.content}`} 
+        text={`${article.excerpt}. ${article.content}`}
       />
 
-      {/* Resumo Inteligente por IA (TL;DR) */}
+      {/* Resumo Inteligente por IA (TL;DR do Registro) */}
       <ArticleAISummary 
-        title={article.title} 
-        excerpt={article.excerpt} 
-        content={article.content} 
+        title={article.title}
+        excerpt={article.excerpt}
+        content={article.content}
       />
 
-
-      {/* Table of Contents (Índice de Seções da Matéria) */}
+      {/* Table of Contents (Índice de Seções do Registro) */}
       {tocHeadings.length > 0 && (
         <div className="bg-[#0f1420] border border-cyan-500/30 rounded-2xl p-5 mb-10 space-y-3">
           <h3 className="font-display font-bold text-sm text-white uppercase tracking-wider flex items-center gap-2 border-b border-white/10 pb-2">
-            <List className="w-4 h-4 text-cyan-400" /> Neste Artigo (Índice de Leitura)
+            <List className="w-4 h-4 text-cyan-400" /> Índice de Leitura
           </h3>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
             {tocHeadings.map((h, idx) => {
@@ -236,27 +258,27 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
         </div>
       )}
 
-      {/* Primeira Metade do Artigo */}
+      {/* Primeira Metade do Registro */}
       <MarkdownRenderer content={firstHalfText} />
 
       {/* AdSense Placement 2: In-Article Ad */}
       <AdSensePlaceholder slotId="ads-in-article" format="auto" />
 
-      {/* Segunda Metade do Artigo */}
+      {/* Segunda Metade do Registro */}
       <MarkdownRenderer content={secondHalfText} />
 
-      {/* AdSense Placement 3: Rodapé do Artigo */}
+      {/* AdSense Placement 3: Rodapé do Registro */}
       <AdSensePlaceholder slotId="ads-bottom-article" format="horizontal" />
 
-      {/* Artigos Relacionados */}
+      {/* Transmissões Relacionadas (registros conexos) */}
       {relatedArticles.length > 0 && (
         <section className="pt-10 border-t border-white/10 mt-12 space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="font-display font-bold text-2xl text-white flex items-center gap-2">
-              <Tag className="w-5 h-5 text-cyan-400" /> Artigos Relacionados
+              <Tag className="w-5 h-5 text-cyan-400" /> Transmissões Relacionadas
             </h3>
             <Link to="/" className="text-xs text-cyan-400 hover:underline flex items-center">
-              Ver todos <ChevronRight className="w-3.5 h-3.5" />
+              Ver todas <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -271,7 +293,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
                   <div className="h-32 w-full rounded-xl overflow-hidden mb-3 bg-slate-950">
                     <img 
                       src={rel.image} 
-                      alt={rel.title} 
+                      alt={rel.title}
                       onError={(e) => { e.currentTarget.src = '/art_openai_o3.png'; }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -299,7 +321,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
       {/* Módulo de Comentários & Reações da Comunidade */}
       <ArticleComments articleId={article.id} />
 
-    </article>
-
+      </article>
+    </>
   );
 };
