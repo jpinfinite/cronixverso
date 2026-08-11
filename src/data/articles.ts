@@ -24,11 +24,11 @@ Ao contrário das LLMs tradicionais que apenas respondem a um prompt isolado, um
 
 ## ⚙️ Arquitetura dos Agentes de IA Modernos
 
-```
+\`\`\`
 [Prompt do Usuário] ---> [Módulo de Planejamento (LLM)] ---> [Seleção de Ferramentas]
                                    ^                                   |
                                    |--- [Loop de Raciocínio (ReAct)] --|
-```
+\`\`\`
 
 Entre os principais frameworks de orquestração utilizados em 2026 estão o **Hermes Agent (Nous Research)**, LangGraph e AutoGen, que permitem a coordenação de múltiplos agentes especialistas trabalhando em enxame (Swarm).`
   },
