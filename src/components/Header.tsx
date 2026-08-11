@@ -178,7 +178,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="px-3 py-2 rounded-full bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-all flex items-center gap-1.5 font-bold"
             >
               <span className="w-2 h-2 rounded-full bg-red-500 animate-ping shrink-0" />
-              <span>Cronix TV</span>
+              <span>Cronixverso TV</span>
             </a>
           </nav>
 
@@ -307,7 +307,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="p-2.5 rounded-xl bg-red-500/10 text-red-300 hover:bg-red-500/20 flex items-center space-x-2 border border-red-500/20"
               >
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-                <span>Cronix TV</span>
+                <span>Cronixverso TV</span>
               </a>
             </div>
           </div>

@@ -12,7 +12,8 @@ import {
   Bot,
   Star,
   Zap,
-  Bookmark
+  Bookmark,
+  Flame
 } from 'lucide-react';
 import { ALL_ARTICLES } from '../data/articles';
 import { TechComparator } from '../components/TechComparator';
@@ -129,6 +130,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               
               <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8 flex flex-col justify-end">
                 <div className="flex items-center space-x-3 mb-3">
+                  <span className="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-black tracking-wider px-3 py-1 rounded-full uppercase flex items-center gap-1 shadow-lg shadow-amber-500/10">
+                    <Flame className="w-3 h-3 text-amber-400 fill-amber-400" />
+                    <span>MANCHETE PRINCIPAL</span>
+                  </span>
                   <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-[11px] font-bold tracking-wider px-3 py-1 rounded-full uppercase">
                     {heroMainArticle.category}
                   </span>
@@ -259,10 +264,27 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredArticles.map((article) => {
               const isSaved = savedArticleIds.includes(article.id);
+              
+              // Mapeamento de estilos dinâmicos WCAG compliant por categoria
+              const catLower = article.category.toLowerCase();
+              let borderAccent = 'hover:border-cyan-500/50';
+              let tagStyle = 'bg-cyan-950/80 text-cyan-300 border-cyan-500/30';
+              
+              if (catLower.includes('hardware') || catLower.includes('processador')) {
+                borderAccent = 'hover:border-indigo-500/50';
+                tagStyle = 'bg-indigo-950/80 text-indigo-300 border-indigo-500/30';
+              } else if (catLower.includes('game') || catLower.includes('dev')) {
+                borderAccent = 'hover:border-purple-500/50';
+                tagStyle = 'bg-purple-950/80 text-purple-300 border-purple-500/30';
+              } else if (catLower.includes('ciência') || catLower.includes('ciencia')) {
+                borderAccent = 'hover:border-emerald-500/50';
+                tagStyle = 'bg-emerald-950/80 text-emerald-300 border-emerald-500/30';
+              }
+
               return (
                 <div 
                   key={article.id} 
-                  className="group cursor-pointer rounded-2xl glass-card glass-card-hover overflow-hidden border border-white/10 flex flex-col justify-between relative"
+                  className={`group cursor-pointer rounded-2xl glass-card glass-card-hover overflow-hidden border border-white/10 ${borderAccent} flex flex-col justify-between relative transition-all duration-300`}
                 >
                   {/* Botão de Salvar Rápido */}
                   <button 
@@ -289,7 +311,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         onError={(e) => { e.currentTarget.src = '/art_openai_o3.png'; }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute top-3 left-3 bg-[#07090e]/80 backdrop-blur-md border border-white/10 text-cyan-400 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
+                      <div className={`absolute top-3 left-3 backdrop-blur-md border ${tagStyle} text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm`}>
                         {article.category}
                       </div>
                     </div>
