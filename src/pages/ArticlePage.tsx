@@ -80,7 +80,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
 
   // Extrair Seções para o Índice (Table of Contents) — usando "índice de leitura"
   const tocHeadings = article.content 
-    ? article.content.split('\n').filter(line => line.startsWith('### '))
+    ? article.content.split('\n').filter(line => line.startsWith('## ') || line.startsWith('### '))
     : [];
 
   // Encontrar transmissões relacionadas — registros conexos
@@ -246,7 +246,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
           </h3>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
             {tocHeadings.map((h, idx) => {
-              const cleanText = h.replace(/^###\s+/, '');
+              const cleanText = h.replace(/^#{2,3}\s+/, '');
               return (
                 <li key={idx} className="flex items-center text-slate-300 hover:text-cyan-300 transition-colors">
                   <span className="text-cyan-400 mr-2 font-bold">•</span>

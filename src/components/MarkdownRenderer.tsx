@@ -101,6 +101,29 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       return;
     }
 
+    // Code block toggle
+    if (line.startsWith('```')) {
+      flushParagraph();
+      flushList();
+      return;
+    }
+
+    // Heading 2
+    if (line.startsWith('## ')) {
+      flushParagraph();
+      flushList();
+      const text = line.replace(/^##\s+/, '');
+      elements.push(
+        <h2 
+          key={`h2-${elements.length}`} 
+          className="font-display font-extrabold text-2xl sm:text-3xl text-white mt-10 mb-4 border-l-4 border-cyan-400 pl-4 py-2 bg-gradient-to-r from-cyan-500/20 via-cyan-500/5 to-transparent rounded-r-xl shadow-md"
+        >
+          {renderFormattedText(text)}
+        </h2>
+      );
+      return;
+    }
+
     // Heading 3
     if (line.startsWith('### ')) {
       flushParagraph();
@@ -109,8 +132,9 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       elements.push(
         <h3 
           key={`h3-${elements.length}`} 
-          className="font-display font-extrabold text-2xl sm:text-3xl text-white mt-10 mb-4 border-l-4 border-cyan-500 pl-4 py-2 bg-gradient-to-r from-cyan-500/15 via-cyan-500/5 to-transparent rounded-r-xl shadow-md"
+          className="font-display font-extrabold text-xl sm:text-2xl text-slate-100 mt-8 mb-3 flex items-center gap-2"
         >
+          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 inline-block shadow-sm shadow-cyan-400/50" />
           {renderFormattedText(text)}
         </h3>
       );
@@ -125,9 +149,8 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       elements.push(
         <h4 
           key={`h4-${elements.length}`} 
-          className="font-display font-bold text-xl text-cyan-300 mt-8 mb-3 flex items-center gap-2"
+          className="font-display font-bold text-lg text-cyan-300 mt-6 mb-2"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 inline-block shadow-sm shadow-cyan-400/50" />
           {renderFormattedText(text)}
         </h4>
       );
