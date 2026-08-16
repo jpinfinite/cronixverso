@@ -19,6 +19,7 @@ import { ALL_ARTICLES } from '../data/articles';
 import { TechComparator } from '../components/TechComparator';
 import { VideoSection } from '../components/VideoSection';
 import { ChronosAIEngine } from '../components/ChronosAIEngine';
+import { ChronosMotionPortal } from '../components/ChronosMotionPortal';
 
 
 const AI_TOOLS_DIRECTORY = [
@@ -204,6 +205,11 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* CHRONOS AI STUDIO - QUANTUM & AI INTELLIGENCE */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ChronosAIEngine />
+      </div>
+
+      {/* Scrollytelling Kinetic Motion Portal */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ChronosMotionPortal />
       </div>
 
       {/* Feed de Notícias & Filtros por Categoria */}
