@@ -18,6 +18,7 @@ import {
 import { ALL_ARTICLES } from '../data/articles';
 import { TechComparator } from '../components/TechComparator';
 import { VideoSection } from '../components/VideoSection';
+import { ChronosAIEngine } from '../components/ChronosAIEngine';
 
 
 const AI_TOOLS_DIRECTORY = [
@@ -199,6 +200,11 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         </div>
       </section>
+
+      {/* CHRONOS AI STUDIO - QUANTUM & AI INTELLIGENCE */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ChronosAIEngine />
+      </div>
 
       {/* Feed de Notícias & Filtros por Categoria */}
       <section id="noticias" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
