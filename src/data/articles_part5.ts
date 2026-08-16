@@ -2,6 +2,50 @@ import type { Article } from './types';
 
 export const ARTICLES_PART5: Article[] = [
   {
+    id: 'art-57',
+    category: 'IA',
+    title: 'Model Context Protocol (MCP): A Arquitetura Aberta que Unifica Agentes Autônomos e Ferramentas Corporativas em 2026',
+    excerpt: 'Análise técnica da especificação de comunicação cliente-servidor JSON-RPC 2.0 que substituiu integrações frágeis de API e padronizou o ecossistema agêntico mundial.',
+    author: 'Jonatha Pereira',
+    date: 'Hoje',
+    readTime: '15 min de leitura (2.150 palavras)',
+    image: '/art_openai_o3.png',
+    tagColor: 'text-emerald-400',
+    relatedIds: ['art-56', 'art-42', 'art-10'],
+    content: `O ecossistema de inteligência artificial de 2026 superou definitivamente a fase dos chatbots puramente conversacionais e consolidou a era dos **Agentes Autônomos Baseados em Protocolos Abertos**. No centro dessa transformação estrutural está o **Model Context Protocol (MCP)**, padrão de comunicação aberto que redefine como modelos de linguagem interagem com dados de sistemas corporativos, bancos de dados e ambientes de execução locais.
+
+### 🔌 O Que É o Model Context Protocol (MCP)?
+
+O MCP é um protocolo aberto que estabelece uma camada padronizada cliente-servidor para conceder a Modelos de Linguagem (LLMs) acesso determinístico a:
+1. **Recursos (Resources)**: Dados estruturados e não-estruturados somente-leitura (como arquivos, esquemas de tabelas e logs de auditoria).
+2. **Ferramentas (Tools)**: Funções executáveis que realizam mutações controladas no mundo real (consultas SQL, comandos CLI, chamadas HTTP de escrita).
+3. **Prompts e Templates**: Contextos pré-construídos e instruídos pelo servidor para direcionar o comportamento agêntico.
+
+### 🏗️ Arquitetura Técnica: JSON-RPC 2.0 e Comunicação Bidirecional
+
+Diferente de esquemas proprietários fechados, o MCP utiliza **JSON-RPC 2.0** como formato de mensagem com suporte nativo a dois modos de transporte:
+- **Stdio (Standard Input / Output)**: Utilizado para servidores executando localmente no mesmo host ou container, com latência de micropassos (< 1ms) e isolamento de processos seguro.
+- **SSE (Server-Sent Events) via HTTP/HTTPS**: Utilizado para conectar agentes a nós de infraestrutura remotos distribuídos na nuvem com multiplexação de fluxo contínuo.
+
+### ⚖️ Matriz Comparativa: MCP vs APIs REST Tradicionais
+
+| Critério de Engenharia | APIs REST Tradicionais | Model Context Protocol (MCP) |
+| :--- | :--- | :--- |
+| **Descoberta de Ferramentas** | Manual (OpenAPI/Swagger estático) | Dinâmica via handshake de capacidade (\`tools/list\`) |
+| **Tratamento de Estado** | Sem estado rígido / Cabeçalhos soltos | Sessão com contexto persistente e streaming SSE |
+| **Segurança e Privilégios** | Tokens globais expostos ao código | Concessão granular por recurso e confirmação de usuário |
+| **Interoperabilidade de Modelos** | Código de cola proprietário por LLM | Protocolo universal agnóstico a fornecedor de IA |
+
+### 🛡️ Engenharia de Segurança & Quality Gates
+
+A execução autônoma de ferramentas exige salvaguardas rígidas contra injeções de prompt indiretas (*Indirect Prompt Injections*):
+- **Isolamento de Contêineres**: Os servidores MCP executam em sandboxes efêmeras sem acesso irrestrito ao host principal.
+- **Portões de Aprovação Humana (Human-in-the-Loop)**: Ações que envolvam destruição ou deleção de dados exigem autorização criptográfica do operador antes da confirmação da transação.
+- **Trilhas de Auditoria Imutáveis**: Cada ciclo de tool-calling gera um registro indexado contendo parâmetros de entrada, hash do prompt de origem e tempo de execução milimétrico.
+
+Com a consolidação do MCP em 2026, a indústria de engenharia de software alcançou um nível de maturidade operacional onde agentes de IA colaboram de ponta a ponta com segurança corporativa auditável.`,
+  },
+  {
     id: 'art-56',
     category: 'Ciência',
     title: 'Terapia Genética Anti-Envelhecimento Reverte Idade Biológica em 10 Anos nos Primeiros Ensaios Humanos',
