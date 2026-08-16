@@ -3,6 +3,67 @@ export type { Article };
 
 export const ARTICLES_DATABASE: Article[] = [
   {
+    id: 'cronix-2026-mcp-protocol',
+    category: 'IA',
+    title: 'Model Context Protocol (MCP): A Arquitetura Aberta que Conectou as LLMs ao Mundo Real',
+    excerpt: 'Compreenda a especificação técnica do MCP criada pela Anthropic, como funciona a camada cliente-servidor e por que ela se tornou o padrão universal de conectividade para agentes de IA.',
+    author: 'Jonatha Pereira',
+    date: '15 de Agosto, 2026',
+    readTime: '14 min de leitura (2.200 palavras)',
+    image: '/images/mcp-ai-protocol-2026.jpg',
+    tagColor: 'text-violet-400',
+    relatedIds: ['cronix-new-1', 'cronix-new-2'],
+    content: `O surgimento do **Model Context Protocol (MCP)** em código aberto representou para os modelos de Inteligência Artificial o que o protocolo HTTP representou para a World Wide Web: um padrão universal, aberto e desacoplado de comunicação.
+
+## 🔌 O Fim das Integrações Proprietárias
+
+Historicamente, cada empresa de software desenvolvia seus próprios plugins e conectores sob medida para conectar uma LLM a uma base de código, banco de dados ou ferramenta externa. O MCP padronizou essa arquitetura dividindo-a em três papéis essenciais:
+
+1. **MCP Host**: A aplicação cliente onde o modelo de IA é executado (ex.: Antigravity IDE, Cursor, Claude Desktop).
+2. **MCP Client**: A camada interna que mantém a conexão 1:1 com os servidores e traduz chamadas de ferramentas.
+3. **MCP Server**: Programas leves e isolados que expõem capacidades específicas (leitura de repositórios Git, consultas a bancos SQL, telemetria em nuvem).
+
+## 🛠️ As 3 Primitivas Fundamentais do MCP
+
+A especificação oficial do protocolo opera sobre transporte JSON-RPC 2.0 via \`stdio\` local ou conexões remotas seguras (SSE - Server-Sent Events):
+
+- **Resources (Recursos)**: Dados estáticos ou contextuais que o cliente pode ler (como arquivos de código, logs e esquemas de banco).
+- **Tools (Ferramentas)**: Funções executáveis que o modelo de IA pode acionar com parâmetros tipados em JSON Schema.
+- **Prompts**: Modelos de instruções parametrizáveis expostos pelo servidor para orientar a LLM sobre fluxos de trabalho específicos.
+
+Com a adoção universal do MCP, agentes autônomos podem alternar entre dezenas de ferramentas locais e em nuvem sem a necessidade de reescrever uma única linha de código do modelo.`
+  },
+  {
+    id: 'cronix-2026-local-llms-hardware',
+    category: 'Hardware',
+    title: 'Guia de Hardware para IA Local: Como Rodar Modelos de 70B em Casa com Privacidade Total',
+    excerpt: 'Tudo o que você precisa saber sobre quantização GGUF/EXL2, largura de banda de VRAM, offloading de camadas e montagem de uma estação de trabalho para inferência local.',
+    author: 'Jonatha Pereira',
+    date: '15 de Agosto, 2026',
+    readTime: '16 min de leitura (2.600 palavras)',
+    image: '/images/local-llm-hardware-2026.jpg',
+    tagColor: 'text-cyan-400',
+    relatedIds: ['cronix-new-2'],
+    content: `A soberania de dados e a privacidade corporativa impulsionaram a corrida pela execução de **Large Language Models Locais**. Em 2026, com o avanço das técnicas de quantização, ter uma estação de trabalho capaz de rodar modelos abertos de alta capacidade tornou-se acessível.
+
+## 🧠 A Métrica que Realmente Importa: Largura de Banda de Memória (VRAM)
+
+Diferente do treinamento de redes neurais (onde o poder de computação em TFLOPS é o fator limitante), na **inferência de LLMs** o gargalo fundamental é a velocidade de leitura da memória de vídeo:
+
+- Para gerar 1 token de texto em um modelo de 70 bilhões de parâmetros quantizado em 4 bits (Q4_K_M ~ 40 GB de peso), a GPU precisa transferir 40 GB inteiros da memória para os núcleos de processamento.
+- Uma placa com **1.000 GB/s de largura de banda** conseguirá teoricamente atingir até 25 tokens por segundo.
+- Dividir o modelo entre memória RAM do sistema (DDR5 ~ 60 GB/s) e GPU desacelera brutalmente a velocidade de resposta.
+
+## ⚙️ Tecnologias de Otimização e Quantização
+
+1. **GGUF (llama.cpp)**: O formato mais versátil para CPU e GPU, ideal para carregar camadas divididas (*layer offloading*).
+2. **EXL2 (ExLlamaV2)**: Otimização extrema para GPUs Nvidia com taxas de bits fracionárias (ex.: 3.5bpw a 6.0bpw), entregando máxima velocidade de inferência.
+3. **FlashAttention-2 e KV-Cache Paged**: Redução no consumo de memória proporcional ao tamanho da janela de contexto (permitindo 32k a 128k tokens locais sem estourar a VRAM).
+
+Ao montar um setup local, priorize quantidade total de VRAM (duas GPUs de 24 GB via PCIe ou arquiteturas de memória unificada) para garantir máxima velocidade e total confidencialidade dos seus dados.`
+  },
+
+  {
     id: 'cronix-new-1',
     category: 'IA',
     title: 'O Guia Definitivo dos Agentes Autônomos de IA em 2026: De Assistentes a Trabalhadores Digitais',
