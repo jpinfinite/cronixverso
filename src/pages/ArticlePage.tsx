@@ -19,6 +19,7 @@ import { TransmissionSchema, BreadcrumbSchema, FoundationSchema } from '../compo
 import { ArticleAudioPlayer } from '../components/ArticleAudioPlayer';
 import { ArticleAISummary } from '../components/ArticleAISummary';
 import { ArticleComments } from '../components/ArticleComments';
+import { ArticleTechCard } from '../components/ArticleTechCard';
 
 
 interface ArticlePageProps {
@@ -266,6 +267,9 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
 
       {/* Segunda Metade do Registro */}
       <MarkdownRenderer content={secondHalfText} />
+
+      {/* In-Article Contextual Hardware & Gaming Recommendations (Shopee + Mercado Livre) */}
+      <ArticleTechCard category={article.category} id={article.id} />
 
       {/* AdSense Placement 3: Rodapé do Registro */}
       <AdSensePlaceholder slotId="ads-bottom-article" format="horizontal" />
