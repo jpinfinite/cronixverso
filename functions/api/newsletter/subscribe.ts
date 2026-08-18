@@ -7,7 +7,12 @@ interface Env {
   BREVO_LIST_ID?: string;
 }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
+interface EventContext<E> {
+  request: Request;
+  env: E;
+}
+
+export const onRequestPost = async (context: EventContext<Env>) => {
   const { request, env } = context;
 
   const responseHeaders = {
