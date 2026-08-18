@@ -13,7 +13,8 @@ import {
   Bookmark,
   Menu,
   X,
-  Sparkles
+  Sparkles,
+  ShoppingBag
 } from 'lucide-react';
 import { GoogleAuthButton } from './GoogleAuthButton';
 
@@ -172,6 +173,14 @@ export const Header: React.FC<HeaderProps> = ({
               <Sparkles className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
               <span>Ferramentas IA</span>
             </Link>
+
+            <a 
+              href="/#hardware-games"
+              className="px-3 py-2 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 transition-all flex items-center gap-1.5 font-bold"
+            >
+              <ShoppingBag className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Ofertas Gamer</span>
+            </a>
 
             <a 
               href="#videos"

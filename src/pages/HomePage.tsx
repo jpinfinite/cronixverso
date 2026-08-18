@@ -20,6 +20,7 @@ import { TechComparator } from '../components/TechComparator';
 import { VideoSection } from '../components/VideoSection';
 import { ChronosAIEngine } from '../components/ChronosAIEngine';
 import { ChronosMotionPortal } from '../components/ChronosMotionPortal';
+import { TechAffiliateShowcase } from '../components/TechAffiliateShowcase';
 import { subscribeNewsletter } from '../services/newsletterService';
 import { sendGAEvent } from '../utils/analytics';
 
@@ -370,6 +371,9 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         )}
       </section>
+
+      {/* Vitrine de Hardware, Consoles & Games (Shopee & Mercado Livre) */}
+      <TechAffiliateShowcase />
 
       {/* Widget Comparador de Hardware & IA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
