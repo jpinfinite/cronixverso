@@ -175,6 +175,14 @@ export const Header: React.FC<HeaderProps> = ({
             </Link>
 
             <a 
+              href="/#calculadora-pc-gamer"
+              className="px-3 py-2 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 transition-all flex items-center gap-1.5 font-bold"
+            >
+              <Cpu className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+              <span>Simulador PC</span>
+            </a>
+
+            <a 
               href="/#hardware-games"
               className="px-3 py-2 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 transition-all flex items-center gap-1.5 font-bold"
             >

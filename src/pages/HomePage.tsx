@@ -21,6 +21,7 @@ import { VideoSection } from '../components/VideoSection';
 import { ChronosAIEngine } from '../components/ChronosAIEngine';
 import { ChronosMotionPortal } from '../components/ChronosMotionPortal';
 import { TechAffiliateShowcase } from '../components/TechAffiliateShowcase';
+import { GamerBottleneckCalculator } from '../components/GamerBottleneckCalculator';
 import { subscribeNewsletter } from '../services/newsletterService';
 import { sendGAEvent } from '../utils/analytics';
 
@@ -384,6 +385,14 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section id="videos" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <VideoSection />
       </section>
+
+      {/* Calculadora de Gargalo de PC Gamer (Bottleneck) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <GamerBottleneckCalculator />
+      </div>
+
+      {/* Vitrine Gamer & Hardware Hub (Shopee + Mercado Livre) */}
+      <TechAffiliateShowcase />
 
 
 
