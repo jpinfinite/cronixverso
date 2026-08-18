@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   TrendingUp, 
@@ -20,6 +20,8 @@ import { TechComparator } from '../components/TechComparator';
 import { VideoSection } from '../components/VideoSection';
 import { ChronosAIEngine } from '../components/ChronosAIEngine';
 import { ChronosMotionPortal } from '../components/ChronosMotionPortal';
+import { subscribeNewsletter } from '../services/newsletterService';
+import { sendGAEvent } from '../utils/analytics';
 
 
 const AI_TOOLS_DIRECTORY = [
@@ -75,6 +77,22 @@ export const HomePage: React.FC<HomePageProps> = ({
   onToggleSaveArticle
 }) => {
   const navigate = useNavigate();
+
+  const [homeNewsletterEmail, setHomeNewsletterEmail] = useState('');
+  const [homeNewsletterSubmitted, setHomeNewsletterSubmitted] = useState(false);
+  const [homeNewsletterLoading, setHomeNewsletterLoading] = useState(false);
+
+  const handleHomeNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (homeNewsletterEmail && !homeNewsletterLoading) {
+      setHomeNewsletterLoading(true);
+      sendGAEvent('subscribe_newsletter', 'conversion_home', homeNewsletterEmail);
+      await subscribeNewsletter(homeNewsletterEmail);
+      setHomeNewsletterLoading(false);
+      setHomeNewsletterSubmitted(true);
+      setHomeNewsletterEmail('');
+    }
+  };
 
   // Função utilitária para normalizar categorias
   const normalizeCat = (cat: string) => {
@@ -430,21 +448,31 @@ export const HomePage: React.FC<HomePageProps> = ({
               Inscreva-se gratuitamente na nossa newsletter semanal com o resumo das principais inovações em IA, games e ciência.
             </p>
 
-            <form onSubmit={(e) => { e.preventDefault(); alert('Inscrição realizada com sucesso no Cronixverso!'); }} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input 
-                type="email" 
-                placeholder="Seu melhor e-mail..."
-                required
-                className="flex-1 bg-[#07090e] border border-white/15 rounded-full px-5 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400"
-              />
-              <button 
-                type="submit"
-                className="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-sm px-6 py-3 rounded-full flex items-center justify-center space-x-2 transition-all shadow-lg shadow-cyan-500/25"
-              >
-                <span>Inscrever-se</span>
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
+            {homeNewsletterSubmitted ? (
+              <div className="bg-cyan-500/10 border border-cyan-500/40 p-4 rounded-2xl text-cyan-400 font-bold text-sm inline-flex items-center space-x-2 max-w-md mx-auto">
+                <CheckCircle2 className="w-5 h-5 shrink-0" />
+                <span>Inscrição confirmada! Você receberá as novidades no seu e-mail.</span>
+              </div>
+            ) : (
+              <form onSubmit={handleHomeNewsletter} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input 
+                  type="email" 
+                  placeholder="Seu melhor e-mail..."
+                  required
+                  value={homeNewsletterEmail}
+                  onChange={(e) => setHomeNewsletterEmail(e.target.value)}
+                  className="flex-1 bg-[#07090e] border border-white/15 rounded-full px-5 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400"
+                />
+                <button 
+                  type="submit"
+                  disabled={homeNewsletterLoading}
+                  className="bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-sm px-6 py-3 rounded-full flex items-center justify-center space-x-2 transition-all shadow-lg shadow-cyan-500/25 disabled:opacity-50"
+                >
+                  <span>{homeNewsletterLoading ? 'Enviando...' : 'Inscrever-se'}</span>
+                  <Send className="w-4 h-4" />
+                </button>
+              </form>
+            )}
 
             <div className="flex items-center justify-center space-x-4 text-xs text-slate-400 mt-4">
               <span className="flex items-center"><CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 mr-1" /> Sem spam</span>

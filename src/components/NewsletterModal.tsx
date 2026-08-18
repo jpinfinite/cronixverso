@@ -4,11 +4,13 @@ import { GoogleAuthButton } from './GoogleAuthButton';
 
 
 import { sendGAEvent } from '../utils/analytics';
+import { subscribeNewsletter } from '../services/newsletterService';
 
 export const NewsletterModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const isDismissed = localStorage.getItem('cronix_newsletter_dismissed');
@@ -25,13 +27,18 @@ export const NewsletterModal: React.FC = () => {
     localStorage.setItem('cronix_newsletter_dismissed', 'true');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    sendGAEvent('subscribe_newsletter', 'conversion', email);
-    setSubscribed(true);
-    setTimeout(() => {
-      handleClose();
-    }, 2500);
+    if (email && !loading) {
+      setLoading(true);
+      sendGAEvent('subscribe_newsletter', 'conversion', email);
+      await subscribeNewsletter(email);
+      setLoading(false);
+      setSubscribed(true);
+      setTimeout(() => {
+        handleClose();
+      }, 2500);
+    }
   };
 
 
