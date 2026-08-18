@@ -3,6 +3,271 @@ export type { Article };
 
 export const ARTICLES_DATABASE: Article[] = [
   {
+    id: 'rtx-5090-vs-rtx-4090-arquitetura-blackwell-vale-a-pena',
+    category: 'Hardware',
+    title: 'RTX 5090 vs RTX 4090: Análise da Arquitetura Blackwell, GDDR7 e Ganhos Reais em 4K e IA',
+    excerpt: 'Desconstruímos a nova placa topo de linha da NVIDIA: barramento de 512-bit, largura de banda de 1.8 TB/s com memórias GDDR7 e o impacto da microarquitetura Blackwell em jogos e LLMs locais.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '11 min de leitura (1.850 palavras)',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-indigo-400',
+    relatedIds: ['ryzen-7-9800x3d-o-rei-dos-jogos-analise-termica', 'cronix-2026-local-llms-hardware'],
+    content: `A chegada da arquitetura **Blackwell** para o segmento de consumo marca um salto substancial na largura de banda de memória e no processamento de Tensores de 5ª geração.
+
+---
+
+## Especificações Técnicas Comparadas
+
+| Parâmetro | NVIDIA GeForce RTX 4090 (Ada Lovelace) | NVIDIA GeForce RTX 5090 (Blackwell) | Variação |
+| :--- | :--- | :--- | :--- |
+| **CUDA Cores** | 16.384 | 21.760 | +32.8% |
+| **Tipo de Memória** | 24 GB GDDR6X | 32 GB GDDR7 | +33.3% VRAM |
+| **Largura de Barramento** | 384-bit | 512-bit | +33.3% |
+| **Largura de Banda** | 1.008 GB/s | 1.792 GB/s | +77.8% |
+| **TDP Oficial** | 450W | 600W | +33.3% |
+
+---
+
+## 1. O Impacto das Memórias GDDR7
+A transição da modulação PAM4 da GDDR6X para o esquema PAM3 da GDDR7 permitiu alcançar taxas de transferência de 28 Gbps por pino. Essa largura de banda massiva de quase 1.8 TB/s elimina totalmente os gargalos em resoluções 4K nativas com Ray Tracing e Path Tracing completos.
+
+## 2. Processamento de Modelos de IA e LLMs Locais
+Para desenvolvedores e cientistas de dados, os **32 GB de VRAM** representam um marco: é possível carregar modelos de raciocínio de 32B e 70B parâmetros quantizados em 4-bit (AWQ/GPTQ) com janelas de contexto estendidas de 64k tokens sem transbordamento para a RAM do sistema.
+
+## 3. Requisitos de Fonte e Gabinete
+Devido ao consumo de pico e ao novo conector 12V-2x6 revisado (PCIe 5.1), recomenda-se fontes ATX 3.1 com certificação Cybenetics Titanium de no mínimo 1000W a 1200W.`
+  },
+  {
+    id: 'ryzen-7-9800x3d-o-rei-dos-jogos-analise-termica',
+    category: 'Hardware',
+    title: 'AMD Ryzen 7 9800X3D: Por Que o Novo 3D V-Cache Invertido é o Melhor Processador Gamer do Mundo',
+    excerpt: 'Entenda a reformulação térmica da arquitetura Zen 5 que colocou o cache SRAM abaixo dos núcleos de computação, permitindo overclocking total e temperaturas até 15°C menores.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '9 min de leitura (1.600 palavras)',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-purple-400',
+    relatedIds: ['rtx-5090-vs-rtx-4090-arquitetura-blackwell-vale-a-pena'],
+    content: `A AMD solucionou o calcanhar de Aquiles das gerações anteriores de processadores com cache vertical com o lançamento do **Ryzen 7 9800X3D**.
+
+---
+
+## 1. A Revolução do 3D V-Cache de 2ª Geração
+Nas gerações 5800X3D e 7800X3D, o bloco de 64 MB de cache SRAM era empilhado por cima dos núcleos CCD (Core Complex Die). Isso criava uma barreira térmica que dificultava a transferência de calor para o dissipador (IHS).
+
+No **Ryzen 7 9800X3D**, a AMD inverteu a pilha: o CCD de 8 núcleos fica agora em contato direto com o heatspreader, enquanto o 3D V-Cache fica localizado embaixo.
+
+---
+
+## Vantagens Práticas da Nova Topologia
+
+- **Temperaturas Menores**: Redução de 10°C a 15°C em carga pesada.
+- **Clock Base e Boost Elevados**: Frequências de boost ultrapassando 5.2 GHz de fábrica.
+- **Desbloqueio Total para Overclock (OC)**: Suporte completo a PBO (Precision Boost Overdrive) e ajuste manual de multiplicador.
+- **1% Low e Frametimes Consistentes**: Eliminação de micro-travamentos (*stuttering*) em jogos de mundo aberto como Cyberpunk 2077, Flight Simulator e simuladores competitivos de eSports.`
+  },
+  {
+    id: 'claude-3-7-sonnet-hybrid-reasoning-vs-o3-mini',
+    category: 'IA',
+    title: 'Claude 3.7 Sonnet com Raciocínio Híbrido vs OpenAI o3-mini: A Nova Fronteira da Engenharia de Software',
+    excerpt: 'Análise técnica da capacidade de alternar dinamicamente entre respostas ultra-rápidas e cadeias de pensamento estendidas (CoT) para depuração de código e arquitetura de sistemas.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '10 min de leitura (1.750 palavras)',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-cyan-400',
+    relatedIds: ['mcp-model-context-protocol-o-novo-padrao-dos-agentes', 'hostgator-allpass-hub-ia-vale-a-pena'],
+    content: `A Anthropic estabeleceu um novo paradigma com o **Claude 3.7 Sonnet**: o conceito de *Hybrid Reasoning*.
+
+---
+
+## O Que é Raciocínio Híbrido?
+Tradicionalmente, os desenvolvedores eram obrigados a escolher entre modelos conversacionais rápidos (baixa latência) ou modelos de raciocínio profundo (alta latência com centenas de tokens invisíveis de pensamento).
+
+O Claude 3.7 unifica ambas as modalidades em um único endpoint, permitindo que o usuário ou o agente configure o orçamento exato de tokens de raciocínio (*budget_tokens* de 0 a 128.000 tokens).
+
+---
+
+## Benchmarks de Programação (SWE-bench Verified)
+
+- **Claude 3.7 Sonnet (com CoT estendido)**: 70.3% de resolução autônoma de issues reais do GitHub.
+- **OpenAI o3-mini (High)**: 68.1% de resolução.
+- **Claude 3.5 Sonnet**: 49.2%.
+
+A capacidade de seguir instruções complexas em bases de código legadas sem alucinar dependências torna o modelo a escolha predileta para agentes autônomos de desenvolvimento.`
+  },
+  {
+    id: 'deepseek-r1-como-rodar-localmente-ollama-hardware',
+    category: 'IA',
+    title: 'DeepSeek-R1 Local: Guia de Hardware, Quantização GGUF e Configuração com Ollama no Windows',
+    excerpt: 'Aprenda a executar o modelo de raciocínio aberto no seu computador pessoal: requisitos de VRAM por modelo (1.5B, 8B, 14B, 32B e 70B) e integração com Open WebUI.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '10 min de leitura (1.800 palavras)',
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-cyan-400',
+    relatedIds: ['claude-3-7-sonnet-hybrid-reasoning-vs-o3-mini', 'mcp-model-context-protocol-o-novo-padrao-dos-agentes'],
+    content: `O **DeepSeek-R1** democratizou o raciocínio matemático e lógico profundo com pesos abertos sob licença MIT.
+
+---
+
+## Tabela de Requisitos de Hardware por Destilação
+
+| Modelo Destilado | Formato Quantizado | VRAM Mínima Recomendada | RAM do Sistema |
+| :--- | :--- | :--- | :--- |
+| **DeepSeek-R1-Distill-Qwen-1.5B** | Q8_0 | 3 GB VRAM | 8 GB RAM |
+| **DeepSeek-R1-Distill-Llama-8B** | Q4_K_M | 6 GB VRAM (RTX 3060/4060) | 16 GB RAM |
+| **DeepSeek-R1-Distill-Qwen-14B** | Q4_K_M | 10 GB VRAM (RTX 3080/4070) | 16 GB RAM |
+| **DeepSeek-R1-Distill-Qwen-32B** | Q4_K_M | 18 GB VRAM (RTX 3090/4090) | 32 GB RAM |
+| **DeepSeek-R1-Distill-Llama-70B** | Q4_K_M | 40 GB VRAM (Dual RTX 3090) | 64 GB RAM |
+
+---
+
+## Instalação Prática em 3 Passos
+
+1. Instale o runtime [Ollama](https://ollama.com).
+2. Execute no terminal: \`ollama run deepseek-r1:8b\` ou \`ollama run deepseek-r1:14b\`.
+3. Conecte a interface visual **Open WebUI** ou a extensão do VS Code via API local \`http://localhost:11434\`.`
+  },
+  {
+    id: 'mcp-model-context-protocol-o-novo-padrao-dos-agentes',
+    category: 'IA',
+    title: 'Model Context Protocol (MCP): Como o Padrão Aberto da Anthropic Está Conectando IAs ao Mundo Real',
+    excerpt: 'Entenda a arquitetura de protocolo aberto que padroniza como assistentes inteligentes e LLMs leem bancos de dados, repositórios GitHub, navegadores e APIs locais.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '9 min de leitura (1.550 palavras)',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-cyan-400',
+    relatedIds: ['claude-3-7-sonnet-hybrid-reasoning-vs-o3-mini'],
+    content: `Antes do **Model Context Protocol (MCP)**, cada desenvolvedor precisava criar integrações customizadas (tool calling) e APIs proprietárias para conectar uma IA a um banco de dados SQL, sistema de arquivos ou ferramenta de automação.
+
+---
+
+## A Arquitetura Cliente-Servidor do MCP
+O MCP padroniza essa comunicação em três primitivas fundamentais:
+
+1. **Resources (Recursos)**: Dados estáticos ou dinâmicos que o servidor expõe como leitura (logs, arquivos de texto, tabelas SQL).
+2. **Prompts (Modelos de Instrução)**: Modelos pré-construídos de contexto com parâmetros dinâmicos.
+3. **Tools (Ferramentas de Ação)**: Funções executáveis que o modelo pode invocar com validação de esquema JSON (rodar consultas, enviar e-mails, criar branches no Git).
+
+Essa padronização universal transforma IDEs como o Cursor, Claude Desktop e Antigravity em verdadeiros centros de comando autônomos.`
+  },
+  {
+    id: 'monitores-oled-vs-mini-led-burn-in-e-tempo-de-resposta',
+    category: 'Hardware',
+    title: 'Monitores Gamer OLED vs Mini-LED em 2026: Risco Real de Burn-in, Brilho HDR e Tempo de Resposta',
+    excerpt: 'Guia comparativo definitivo entre painéis QD-OLED de 3ª geração, WOLED e monitores Mini-LED com mais de 2.000 zonas de escurecimento local (FALD).',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '8 min de leitura (1.450 palavras)',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-purple-400',
+    relatedIds: ['rtx-5090-vs-rtx-4090-arquitetura-blackwell-vale-a-pena'],
+    content: `A escolha do monitor topo de linha para jogos e produtividade em 2026 resume-se a duas tecnologias de ponta com características distintas.
+
+---
+
+## Comparativo Direto: QD-OLED vs Mini-LED
+
+- **Preto Absoluto e Contraste**: O OLED vence por desligar individualmente cada pixel (contraste infinito). O Mini-LED pode apresentar ligeiro efeito de halo (*blooming*) ao redor de legendas brancas.
+- **Brilho em Tela Cheia (100% Window)**: O Mini-LED atinge picos sustentados de 1.000 a 1.600 nits, ideal para ambientes muito iluminados. O OLED atinge 250 a 300 nits em tela cheia devido ao limitador automático de brilho (ABL).
+- **Tempo de Resposta**: Painéis OLED entregam 0.03ms GtG instantâneo, com nitidez de movimento insuperável em jogos competitivos.
+- **Risco de Burn-in em Produtividade**: Os novos painéis QD-OLED com layouts subpixel revisados e ciclos de limpeza automática oferecem garantia de fábrica de 3 anos contra retenção de imagem permanente.`
+  },
+  {
+    id: 'engenharia-de-contexto-long-context-vs-rag-vetorial',
+    category: 'Ciência',
+    title: 'Janelas de 2 Milhões de Tokens vs RAG Vetorial: Qual a Arquitetura Mais Eficiente para Dados?',
+    excerpt: 'Análise de performance, latência e custo computacional entre despejar bases inteiras de dados no contexto de LLMs ou manter bancos vetoriais com embeddings semânticos.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '9 min de leitura (1.650 palavras)',
+    image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-emerald-400',
+    relatedIds: ['mcp-model-context-protocol-o-novo-padrao-dos-agentes'],
+    content: `Com modelos como Gemini 1.5/2.0 e Claude suportando janelas de 1 a 2 milhões de tokens, a necessidade de sistemas de **RAG (Retrieval-Augmented Generation)** foi questionada pela indústria.
+
+---
+
+## O Problema do 'Needle in a Haystack' e Custos de Ingestão
+Embora modelos modernos encontrem informações com mais de 99% de precisão no meio de 1 milhão de tokens, a latência de primeiro token (TTFT) escala linearmente com o tamanho do prompt.
+
+- **Abordagem Long-Context**: Excelente para tarefas de raciocínio que exigem relacionar múltiplos trechos de um livro inteiro ou código de um repositório complexo.
+- **Abordagem RAG Híbrido (BM25 + Vetorial + Reranking)**: Continua indispensável para consultar bases com centenas de gigabytes de documentos em milissegundos com custo operacional até 90% menor.`
+  },
+  {
+    id: 'computacao-quantica-e-criptografia-pos-quantica-kyber',
+    category: 'Ciência',
+    title: 'O Fim do RSA? Como os Novos Padrões de Criptografia Pós-Quântica (ML-KEM/Kyber) Protegem a Web',
+    excerpt: 'Entenda o Algoritmo de Shor, a ameaça aos certificados SSL/TLS da internet e a transição global conduzida pelo NIST para algoritmos baseados em reticulados euclidianos.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '10 min de leitura (1.700 palavras)',
+    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-emerald-400',
+    relatedIds: ['seguranca-zero-trust-e-passkeys-o-fim-das-senhas'],
+    content: `A computação quântica prática colocará em cheque toda a criptografia assimétrica moderna baseada na dificuldade de fatoração de números primos gigantescos (RSA e Curvas Elípticas ECC).
+
+---
+
+## A Estratégia 'Harvest Now, Decrypt Later'
+Agências de inteligência e cibercriminosos já estão interceptando e armazenando tráfego cifrado de governos e bancos hoje, aguardando o primeiro computador quântico tolerante a falhas para decifrar os dados no futuro.
+
+---
+
+## O Novo Padrão FIPS 203: ML-KEM (Cristals-Kyber)
+O NIST oficializou os algoritmos pós-quânticos baseados na geometria de reticulados multidimensionais (*Lattice-based cryptography*), que permanecem insolúveis mesmo para supercomputadores quânticos. Navegadores como Chrome e servidores Cloudflare já implementam suporte híbrido X25519Kyber768 em conexões HTTPS de todo o mundo.`
+  },
+  {
+    id: 'ps5-pro-vs-pc-gamer-equivalente-pssr-e-ray-tracing',
+    category: 'Games',
+    title: 'PS5 Pro vs PC Gamer Equivalente: Análise Técnica do PSSR e Ray Tracing Avançado',
+    excerpt: 'Comparamos o novo console da Sony com um computador montado na mesma faixa de preço: fidelidade visual a 60 FPS estáveis e a eficiência do upscaling por Machine Learning.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '9 min de leitura (1.500 palavras)',
+    image: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-purple-400',
+    relatedIds: ['rtx-5090-vs-rtx-4090-arquitetura-blackwell-vale-a-pena'],
+    content: `O lançamento do **PlayStation 5 Pro** reposicionou o debate de custo-benefício entre consoles dedicados e computadores para jogos.
+
+---
+
+## A Importância do PSSR (PlayStation Spectral Super Resolution)
+O PSSR substituiu o tradicional checkerboard rendering por um modelo de reconstrução temporal acelerado por hardware de IA na GPU (16.7 TFLOPS dedicados para IA). O resultado é uma imagem 4K nítida a partir de resolução base de 1152p a 1440p mantendo 60 quadros por segundo constantes.
+
+---
+
+## Veredito do Comparativo
+- **Console (PS5 Pro)**: Praticidade plug-and-play, otimização sob medida para desenvolvedores e arquitetura com 2TB SSD NVMe de fábrica.
+- **PC Gamer Equivalente (Ryzen 5 7600 + RTX 4070)**: Custo inicial ligeiramente superior, porém com acesso a DLSS 3.7 Frame Generation, mods ilimitados e ausência de taxas de assinatura para multiplayer online.`
+  },
+  {
+    id: 'seguranca-zero-trust-e-passkeys-o-fim-das-senhas',
+    category: 'Ciência',
+    title: 'Passkeys e Arquitetura Zero Trust: Por Que as Senhas Tradicionais Estão Sendo Descontinuadas',
+    excerpt: 'Entenda o padrão criptográfico FIDO2/WebAuthn que elimina vazamentos de banco de dados, ataques de phishing e a necessidade de memorizar sequências alfanuméricas.',
+    author: 'Jonatha Pereira',
+    date: '18 de Agosto, 2026',
+    readTime: '8 min de leitura (1.400 palavras)',
+    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&auto=format&fit=crop&q=80',
+    tagColor: 'text-emerald-400',
+    relatedIds: ['computacao-quantica-e-criptografia-pos-quantica-kyber'],
+    content: `Mais de 80% das violações de segurança e acessos indevidos em corporações decorrem do uso de senhas fracas, reutilizadas ou roubadas via phishing.
+
+---
+
+## Como Funcionam as Passkeys (Chaves de Acesso)?
+Ao cadastrar uma Passkey, o dispositivo do usuário (celular ou computador com biometria / Windows Hello) gera um par de chaves criptográficas assimétricas:
+- **Chave Privada**: Fica protegida no enclave seguro de hardware do seu aparelho (TPM ou Secure Enclave) e nunca é enviada pela rede.
+- **Chave Pública**: Fica salva no servidor do site ou aplicativo.
+
+Mesmo que o servidor seja invadido e o banco de dados vazado, os invasores obtêm apenas a chave pública, que é matematicamente inútil sem a biometria do seu dispositivo físico.`
+  },
+
+  {
     id: 'hostgator-allpass-hub-ia-vale-a-pena',
     category: 'IA',
     title: 'HostGator AllPass Vale a Pena? O Hub que Reúne GPT-5, Claude e Gemini em uma Assinatura Única',
