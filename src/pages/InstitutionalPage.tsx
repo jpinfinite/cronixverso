@@ -267,6 +267,53 @@ export const InstitutionalPage: React.FC = () => {
     );
   }
 
+  // Render Política Editorial & Metodologia (Fundamental para E-E-A-T e Aprovação AdSense)
+  if (path === '/politica-editorial') {
+    document.title = 'Política Editorial e Metodologia | CRONIXVERSO';
+    return (
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <Link to="/" className="inline-flex items-center space-x-2 text-xs font-semibold text-slate-300 hover:text-cyan-400 mb-6 bg-white/5 border border-white/10 px-3.5 py-2 rounded-full">
+          <ArrowLeft className="w-4 h-4" />
+          <span>Voltar para o Portal</span>
+        </Link>
+
+        <header className="space-y-3 mb-10">
+          <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-semibold px-3 py-1 rounded-full uppercase">
+            <Shield className="w-3.5 h-3.5 inline mr-1" /> E-E-A-T & DIRETRIZES
+          </span>
+          <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-white">
+            Política <span className="gradient-text">Editorial</span> & Metodologia
+          </h1>
+          <p className="text-slate-400 text-base leading-relaxed">
+            Nossos compromissos de rigor técnico, transparência, checagem de fatos e independência jornalística.
+          </p>
+        </header>
+
+        <div className="prose prose-invert max-w-none text-slate-300 space-y-6 text-base leading-relaxed">
+          <h3 className="text-xl font-bold text-white">1. Princípios Editoriais e Rigor Técnico</h3>
+          <p>
+            No <strong>CRONIXVERSO</strong>, cada artigo, análise e benchmark técnico é submetido a rigoroso escrutínio. Não publicamos matérias com conteúdo reciclado ou superficial. Toda análise de hardware, modelos de inteligência artificial ou lançamentos científicos é embasada em testes empíricos, whitepapers oficiais ou dados de laboratório.
+          </p>
+
+          <h3 className="text-xl font-bold text-white">2. Separação Estrita: Fato vs. Hipótese vs. Opinião</h3>
+          <p>
+            Garantimos distinção clara entre fatos comprovados por benchmarks/fontes primárias, hipóteses teóricas em validação pela comunidade científica e opiniões editoriais de nossos autores.
+          </p>
+
+          <h3 className="text-xl font-bold text-white">3. Metodologia de Testes de Hardware e IA</h3>
+          <p>
+            Nossas análises de placas de vídeo, processadores e modelos de IA seguem condições controladas: mesmas versões de drivers, ambientes isolados de teste e quantificações de métricas reproduzíveis (latência, TPS, consumo de VRAM e temperatura).
+          </p>
+
+          <h3 className="text-xl font-bold text-white">4. Política de Correções</h3>
+          <p>
+            Se algum dado for identificado como impreciso ou desatualizado, atualizamos imediatamente a matéria com nota de transparência indicando a data e a modificação realizada.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   // Render Privacidade (Essencial para Google AdSense)
   document.title = 'Política de Privacidade | CRONIXVERSO';
   return (

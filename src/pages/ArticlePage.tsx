@@ -274,6 +274,31 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
       {/* AdSense Placement 3: Rodapé do Registro */}
       <AdSensePlaceholder slotId="ads-bottom-article" format="horizontal" />
 
+      {/* Box do Autor & E-E-A-T */}
+      <div className="my-10 p-6 rounded-2xl bg-[#0f1420] border border-white/10 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+        <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-cyan-500/50 shrink-0 bg-slate-950">
+          <img 
+            src="/jonatha-pereira.jpeg" 
+            alt={article.author || 'Jonatha Pereira'} 
+            onError={(e) => { e.currentTarget.src = '/logo-icon.svg'; }}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="space-y-1 text-center sm:text-left">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <span className="font-display font-extrabold text-white text-base">
+              {article.author || 'Jonatha Pereira'}
+            </span>
+            <span className="text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded-full uppercase">
+              Editor Técnico & Pesquisador
+            </span>
+          </div>
+          <p className="text-slate-300 text-xs leading-relaxed">
+            Especialista em inteligência artificial, microarquiteturas de hardware, cibersegurança e computação de alta performance. Todas as matérias seguem as <Link to="/politica-editorial" className="text-cyan-400 hover:underline">Diretrizes Editoriais do Cronixverso</Link>.
+          </p>
+        </div>
+      </div>
+
       {/* Transmissões Relacionadas (registros conexos) */}
       {relatedArticles.length > 0 && (
         <section className="pt-10 border-t border-white/10 mt-12 space-y-6">

@@ -113,6 +113,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
           <h4 className="font-bold text-white uppercase tracking-wider mb-3">Institucional</h4>
           <ul className="space-y-2">
             <li><Link to="/sobre" className="hover:text-cyan-400 transition-colors">Sobre o Cronixverso</Link></li>
+            <li><Link to="/politica-editorial" className="hover:text-cyan-400 transition-colors">Diretrizes Editoriais & E-E-A-T</Link></li>
             <li><Link to="/contato" className="hover:text-cyan-400 transition-colors">Contato & Imprensa</Link></li>
             <li><Link to="/termos" className="hover:text-cyan-400 transition-colors">Termos de Uso</Link></li>
             <li><Link to="/privacidade" className="hover:text-cyan-400 transition-colors">Política de Privacidade</Link></li>

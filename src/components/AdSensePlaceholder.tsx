@@ -23,16 +23,18 @@ export const AdSensePlaceholder: React.FC<AdSensePlaceholderProps> = ({
   format = 'auto',
   className = ''
 }) => {
+  const adRef = useRef<HTMLModElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const pushedRef = useRef(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!isMounted || !containerRef.current || pushedRef.current) return;
+    if (!isMounted || !adRef.current || pushedRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,9 +53,31 @@ export const AdSensePlaceholder: React.FC<AdSensePlaceholderProps> = ({
       { rootMargin: '300px' }
     );
 
-    observer.observe(containerRef.current);
+    observer.observe(adRef.current);
 
-    return () => observer.disconnect();
+    const mutationObserver = new MutationObserver(() => {
+      const ins = adRef.current;
+      if (ins) {
+        const isUnfilled = ins.getAttribute('data-ad-status') === 'unfilled';
+        const hasIframe = ins.querySelector('iframe') !== null;
+        if (isUnfilled) {
+          setIsLoaded(false);
+        } else if (hasIframe) {
+          setIsLoaded(true);
+        }
+      }
+    });
+
+    mutationObserver.observe(adRef.current, {
+      attributes: true,
+      attributeFilter: ['data-ad-status', 'style'],
+      childList: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, [isMounted, slotId]);
 
   const activeSlot = CRONIXVERSO_AD_SLOTS[slotId as keyof typeof CRONIXVERSO_AD_SLOTS] || '7125135295';
@@ -61,17 +85,16 @@ export const AdSensePlaceholder: React.FC<AdSensePlaceholderProps> = ({
   return (
     <div 
       ref={containerRef}
-      className={`my-8 w-full flex flex-col items-center justify-center p-2 bg-[#0b0f19]/90 border border-cyan-500/20 rounded-2xl text-center relative overflow-hidden group shadow-inner ${className}`}
+      className={`my-6 mx-auto w-full text-center transition-all duration-300 ${isLoaded ? 'block' : 'hidden'} ${className}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 via-indigo-500/5 to-purple-500/5 pointer-events-none" />
-      
-      <span className="relative z-10 block text-[10px] font-mono tracking-widest text-cyan-400/80 uppercase mb-2">
+      <span className="block text-[10px] font-mono tracking-widest text-cyan-400/80 uppercase mb-1">
         PUBLICIDADE | GOOGLE ADSENSE
       </span>
 
       <ins 
-        className="adsbygoogle relative z-10 w-full"
-        style={{ display: 'block', minHeight: '120px', textAlign: 'center' }}
+        ref={adRef}
+        className="adsbygoogle"
+        style={{ display: 'block', textAlign: 'center' }}
         data-ad-client="ca-pub-1151448515464841"
         data-ad-slot={activeSlot}
         data-ad-format={format}
@@ -80,3 +103,6 @@ export const AdSensePlaceholder: React.FC<AdSensePlaceholderProps> = ({
     </div>
   );
 };
+
+export default AdSensePlaceholder;
+

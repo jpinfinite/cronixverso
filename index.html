@@ -54,17 +54,32 @@
     <meta property="twitter:description" content="Sua fonte definitiva de notícias de tecnologia, inteligência artificial, hardware gamer e ciência." />
     <meta property="twitter:image" content="https://cronixverso.com.br/art_inteligencia_artificial_geral.png" />
 
-    <!-- Google Identity Services SDK -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-    <!-- Google Fonts: Inter & Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-
-
+    <!-- Structured Data JSON-LD (NewsMediaOrganization & E-E-A-T) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsMediaOrganization",
+        "name": "CRONIXVERSO",
+        "url": "https://cronixverso.com.br/",
+        "logo": "https://cronixverso.com.br/logo-icon.svg",
+        "description": "Portal independente de tecnologia, inteligência artificial, hardware de alto desempenho, games e ciência.",
+        "founder": {
+          "@type": "Person",
+          "name": "Jonatha Pereira",
+          "jobTitle": "Editor Técnico & Arquiteto de Sistemas"
+        },
+        "publishingPrinciples": "https://cronixverso.com.br/politica-editorial",
+        "knowsAbout": ["Inteligência Artificial", "Hardware", "Processadores", "Placas de Vídeo", "Cibersegurança", "Ciência"]
+      }
+    </script>
   </head>
   <body class="bg-[#07090e] text-slate-200 font-sans antialiased selection:bg-cyan-500 selection:text-black min-h-screen">
+    <noscript>
+      <div style="padding: 24px; text-align: center; color: #fff; background: #07090e;">
+        <h1>CRONIXVERSO — Tecnologia, Inteligência Artificial, Games e Ciência</h1>
+        <p>Acesse o portal para conferir mais de 100 análises aprofundadas, benchmarks de hardware e novidades do mundo tech.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

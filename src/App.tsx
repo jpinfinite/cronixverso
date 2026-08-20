@@ -112,6 +112,10 @@ export function App() {
               path="/privacidade" 
               element={<InstitutionalPage />} 
             />
+            <Route 
+              path="/politica-editorial" 
+              element={<InstitutionalPage />} 
+            />
             {/* Fallback para rotas desconhecidas */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
