@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+User-Agent: AhrefsBot
+Disallow: /
+
+User-Agent: SemrushBot
+Disallow: /
+
+User-Agent: DotBot
+Disallow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
 Sitemap: https://cronixverso.com.br/sitemap.xml

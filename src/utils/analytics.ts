@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-export const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-CRONIXVERSO1';
+export const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-NBC15REJ6K';
 
 // Inicializar Google Analytics no browser
 export const initGA = () => {
