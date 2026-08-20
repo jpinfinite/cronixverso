@@ -20,37 +20,21 @@ export const ArticleComments: React.FC<ArticleCommentsProps> = ({ articleId }) =
   const [comments, setComments] = useState<CommentItem[]>(() => {
     try {
       const saved = localStorage.getItem(`cronix_comments_${articleId}`);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Filtrar comentários artificiais antigos
+        return parsed.filter((c: CommentItem) => c.id !== 'c1' && c.id !== 'c2');
+      }
     } catch {
       // Fallback
     }
-
-    // Comentários iniciais de exemplo para dar vida ao artigo
-    return [
-      {
-        id: 'c1',
-        userName: 'Lucas Silva',
-        userEmail: 'lucas@gmail.com',
-        userPicture: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80',
-        text: 'Excelente análise! O avanço nessa área está muito mais rápido do que o mercado esperava.',
-        createdAt: 'Há 2 horas',
-        likes: 12
-      },
-      {
-        id: 'c2',
-        userName: 'Carla Mendes',
-        userEmail: 'carla@gmail.com',
-        userPicture: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
-        text: 'Ótima matéria! Gostei bastante do resumo por IA no início do texto.',
-        createdAt: 'Há 45 minutos',
-        likes: 5
-      }
-    ];
+    return [];
   });
 
   const [newCommentText, setNewCommentText] = useState('');
   const [likesCount, setLikesCount] = useState<number>(() => {
-    return parseInt(localStorage.getItem(`cronix_likes_${articleId}`) || '48', 10);
+    const saved = localStorage.getItem(`cronix_likes_${articleId}`);
+    return saved && saved !== '48' ? parseInt(saved, 10) : 0;
   });
   const [hasLikedArticle, setHasLikedArticle] = useState<boolean>(() => {
     return localStorage.getItem(`cronix_user_liked_${articleId}`) === 'true';
@@ -140,7 +124,7 @@ export const ArticleComments: React.FC<ArticleCommentsProps> = ({ articleId }) =
           }`}
         >
           <ThumbsUp className={`w-4 h-4 ${hasLikedArticle ? 'fill-black' : ''}`} />
-          <span>{likesCount} Recomendações</span>
+          <span>{likesCount > 0 ? `${likesCount} Recomendações` : 'Recomendar Matéria'}</span>
         </button>
       </div>
 
@@ -149,7 +133,7 @@ export const ArticleComments: React.FC<ArticleCommentsProps> = ({ articleId }) =
         <div className="flex items-center justify-between">
           <h3 className="font-display font-extrabold text-xl text-white flex items-center space-x-2">
             <MessageSquare className="w-5 h-5 text-cyan-400" />
-            <span>Comentários ({comments.length})</span>
+            <span>Comentários {comments.length > 0 ? `(${comments.length})` : ''}</span>
           </h3>
 
           {!savedUser && <GoogleAuthButton variant="header" />}
@@ -172,7 +156,7 @@ export const ArticleComments: React.FC<ArticleCommentsProps> = ({ articleId }) =
                 required
                 value={newCommentText}
                 onChange={(e) => setNewCommentText(e.target.value)}
-                placeholder={savedUser ? `Comentar como ${savedUser.name}...` : 'Escreva seu comentário... (Faça login com o Google para seu avatar)'}
+                placeholder={savedUser ? `Comentar como ${savedUser.name}...` : 'Escreva seu comentário técnico ou dúvida...'}
                 className="w-full bg-[#0b0f19] border border-white/15 rounded-2xl p-3.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-all resize-none"
               />
               <div className="flex justify-end">
@@ -190,35 +174,41 @@ export const ArticleComments: React.FC<ArticleCommentsProps> = ({ articleId }) =
 
         {/* Lista de Comentários */}
         <div className="space-y-4 pt-2">
-          {comments.map((c) => (
-            <div key={c.id} className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2.5">
-                  {c.userPicture ? (
-                    <img src={c.userPicture} alt={c.userName} className="w-7 h-7 rounded-full border border-cyan-500/50" />
-                  ) : (
-                    <div className="w-7 h-7 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-xs font-bold">
-                      {c.userName.charAt(0)}
+          {comments.length === 0 ? (
+            <div className="text-center py-8 px-4 rounded-2xl bg-white/[0.02] border border-white/5 text-slate-400 text-xs">
+              Nenhum comentário ainda. Participe do debate e compartilhe suas ideias sobre esta matéria!
+            </div>
+          ) : (
+            comments.map((c) => (
+              <div key={c.id} className="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2.5">
+                    {c.userPicture ? (
+                      <img src={c.userPicture} alt={c.userName} className="w-7 h-7 rounded-full border border-cyan-500/50" />
+                    ) : (
+                      <div className="w-7 h-7 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-xs font-bold">
+                        {c.userName.charAt(0)}
+                      </div>
+                    )}
+                    <div>
+                      <span className="font-bold text-xs text-white block leading-none">{c.userName}</span>
+                      <span className="text-[10px] text-slate-500">{c.createdAt}</span>
                     </div>
-                  )}
-                  <div>
-                    <span className="font-bold text-xs text-white block leading-none">{c.userName}</span>
-                    <span className="text-[10px] text-slate-500">{c.createdAt}</span>
                   </div>
+
+                  <button
+                    onClick={() => handleLikeComment(c.id)}
+                    className="flex items-center space-x-1 text-xs text-slate-400 hover:text-cyan-400 transition-colors"
+                  >
+                    <ThumbsUp className="w-3.5 h-3.5" />
+                    <span>{c.likes}</span>
+                  </button>
                 </div>
 
-                <button
-                  onClick={() => handleLikeComment(c.id)}
-                  className="flex items-center space-x-1 text-xs text-slate-400 hover:text-cyan-400 transition-colors"
-                >
-                  <ThumbsUp className="w-3.5 h-3.5" />
-                  <span>{c.likes}</span>
-                </button>
+                <p className="text-xs text-slate-300 leading-relaxed pl-9">{c.text}</p>
               </div>
-
-              <p className="text-xs text-slate-300 leading-relaxed pl-9">{c.text}</p>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>
