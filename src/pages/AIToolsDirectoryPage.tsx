@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Sparkles, Search, ExternalLink, Bot, CheckCircle2, Bookmark } from 'lucide-react';
+import { SoftwareApplicationSchema } from '../components/SchemaMarkup';
 
 interface AITool {
   id: string;
@@ -102,6 +103,16 @@ export function AIToolsDirectoryPage() {
 
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-100 py-16 font-sans">
+      {tools.map(t => (
+        <SoftwareApplicationSchema
+          key={t.id}
+          name={t.name}
+          description={t.description}
+          applicationCategory={t.category === 'dev' ? 'DeveloperApplication' : t.category === 'design' ? 'DesignApplication' : 'BusinessApplication'}
+          offers={{ price: t.pricing === 'Gratuito' ? '0' : '20', priceCurrency: 'USD' }}
+          aggregateRating={{ ratingValue: t.rating, ratingCount: 140 }}
+        />
+      ))}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header Hero */}

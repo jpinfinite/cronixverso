@@ -10,12 +10,13 @@ import {
   BookOpen,
   Tag,
   Bookmark,
-  List
+  List,
+  MessageSquare
 } from 'lucide-react';
 import { ALL_ARTICLES } from '../data/articles';
 import { AdSensePlaceholder } from '../components/AdSensePlaceholder';
 import { MarkdownRenderer } from '../components/MarkdownRenderer';
-import { TransmissionSchema, BreadcrumbSchema, FoundationSchema } from '../components/SchemaMarkup';
+import { TransmissionSchema, TechArticleSchema, BreadcrumbSchema, FoundationSchema } from '../components/SchemaMarkup';
 import { ArticleAudioPlayer } from '../components/ArticleAudioPlayer';
 import { ArticleAISummary } from '../components/ArticleAISummary';
 import { ArticleComments } from '../components/ArticleComments';
@@ -115,16 +116,30 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
       {/* Foundation Schema for site-wide organization */}
       <FoundationSchema />
       
-      {/* Transmission Article Schema using CRONIX terminology */}
+      {/* Schema Markup - Transmission (Article/NewsArticle) para SEO e Google Discover */}
       <TransmissionSchema
         headline={article.title}
         description={article.excerpt}
         datePublished={article.date}
-        author={{ name: 'Fundação CRONIX', role: 'Transmissor da Fundação' }}
-        image={article.image}
-        url={window.location.href}
+        author={{ name: article.author || 'Jonatha Pereira', role: 'Editor Técnico' }}
+        image={`https://cronixverso.com.br${article.image}`}
+        url={`https://cronixverso.com.br/artigo/${article.id}`}
         transmissionCategory={article.category}
       />
+
+      {/* Schema Markup - TechArticle para papers aprofundados e análises técnicas */}
+      {(article.category === 'IA' || article.category === 'Hardware' || article.category === 'Ciência') && (
+        <TechArticleSchema
+          headline={article.title}
+          description={article.excerpt}
+          datePublished={article.date}
+          author={{ name: article.author || 'Jonatha Pereira', role: 'Editor Técnico & Pesquisador de IA' }}
+          image={`https://cronixverso.com.br${article.image}`}
+          url={`https://cronixverso.com.br/artigo/${article.id}`}
+          transmissionCategory={article.category}
+          proficiencyLevel="Expert"
+        />
+      )}
 
       {/* Breadcrumb Schema for navigation context */}
       <BreadcrumbSchema items={[
@@ -346,6 +361,33 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
           </div>
         </section>
       )}
+
+      {/* Caixa de Discussão Técnica e Canal da Comunidade */}
+      <div className="my-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0f1420] via-cyan-950/20 to-[#0f1420] border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+        <div className="space-y-1.5 text-center sm:text-left">
+          <div className="inline-flex items-center gap-2 text-cyan-400 font-display font-bold text-xs uppercase tracking-wider">
+            <MessageSquare className="w-4 h-4" />
+            <span>Comunidade & Debate Técnico</span>
+          </div>
+          <h4 className="text-white font-extrabold text-lg sm:text-xl font-display">
+            Aprofunde esta transmissão com outros desenvolvedores e entusiastas
+          </h4>
+          <p className="text-slate-300 text-xs leading-relaxed max-w-xl">
+            Participe das discussões sobre arquiteturas de LLMs, benchmarks de hardware e papers científicos de IA.
+          </p>
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          <a 
+            href="https://t.me/cronixverso" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="px-6 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs transition-all flex items-center gap-2 shadow-lg shadow-cyan-500/20"
+          >
+            <span>Canal Telegram</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
 
       {/* Módulo de Comentários & Reações da Comunidade */}
       <ArticleComments articleId={article.id} />

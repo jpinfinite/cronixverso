@@ -107,6 +107,131 @@ export const TransmissionSchema: React.FC<TransmissionSchemaProps> = ({
 };
 
 /**
+ * Generates TechArticle schema for in-depth tech and AI research papers.
+ * @see https://schema.org/TechArticle
+ */
+export const TechArticleSchema: React.FC<TransmissionSchemaProps & {
+  proficiencyLevel?: string;
+  dependencies?: string;
+}> = ({
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  author,
+  image,
+  url,
+  transmissionCategory,
+  tags,
+  wordCount,
+  proficiencyLevel = 'Expert',
+  dependencies = 'LLM, Python, Neural Networks, GPU Architecture'
+}) => {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline,
+    description,
+    image: {
+      '@type': 'ImageObject',
+      url: image.startsWith('http') ? image : `https://cronixverso.com.br${image}`,
+      width: 1200,
+      height: 630,
+    },
+    datePublished,
+    dateModified: dateModified || datePublished,
+    author: {
+      '@type': 'Person',
+      name: author.name || 'Jonatha Pereira',
+      jobTitle: author.role || 'Editor Técnico & Pesquisador de IA',
+      url: 'https://cronixverso.com.br/#sobre',
+      knowsAbout: [
+        'Modelos de Linguagem (LLMs)',
+        'Cibersegurança e Criptografia',
+        'Microarquitetura de GPUs e Hardware',
+        'Ciência de Fronteira e Computação Quântica'
+      ],
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'CRONIXVERSO',
+      url: 'https://cronixverso.com.br',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://cronixverso.com.br/logo-principal.svg',
+        width: 600,
+        height: 60,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+    articleSection: transmissionCategory,
+    proficiencyLevel,
+    dependencies,
+    ...(tags && tags.length > 0 && { keywords: tags.join(', ') }),
+    ...(wordCount && { wordCount }),
+    inLanguage: 'pt-BR',
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+};
+
+/**
+ * Generates SoftwareApplication schema for AI tools in the directory.
+ * @see https://schema.org/SoftwareApplication
+ */
+export const SoftwareApplicationSchema: React.FC<{
+  name: string;
+  description: string;
+  applicationCategory?: string;
+  operatingSystem?: string;
+  offers?: { price: string; priceCurrency: string };
+  aggregateRating?: { ratingValue: number; ratingCount: number };
+}> = ({
+  name,
+  description,
+  applicationCategory = 'BusinessApplication',
+  operatingSystem = 'Web, Cloud, Cross-platform',
+  offers = { price: '0', priceCurrency: 'USD' },
+  aggregateRating = { ratingValue: 4.9, ratingCount: 85 }
+}) => {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name,
+    description,
+    applicationCategory,
+    operatingSystem,
+    offers: {
+      '@type': 'Offer',
+      price: offers.price,
+      priceCurrency: offers.priceCurrency,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: aggregateRating.ratingValue,
+      ratingCount: aggregateRating.ratingCount,
+      bestRating: 5,
+      worstRating: 1,
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+};
+
+/**
  * Generates WebSite schema with search action using CRONIX terminology.
  * @see https://schema.org/WebSite
  */

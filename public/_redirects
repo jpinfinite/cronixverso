@@ -1,0 +1,21 @@
+# Cloudflare Pages / HostGator — Cronixverso _redirects
+# Redirecionamentos Canônicos 301 Forçados
+
+# ─── WWW → non-WWW (301 permanente) ─────────────────────────────────────────────
+https://www.cronixverso.com.br/*  https://cronixverso.com.br/:splat  301!
+http://www.cronixverso.com.br/*   https://cronixverso.com.br/:splat  301!
+http://cronixverso.com.br/*       https://cronixverso.com.br/:splat  301!
+
+# ─── pages.dev → domínio oficial .com.br (301) ──────────────────────────────────
+https://cronixverso.pages.dev/*   https://cronixverso.com.br/:splat   301!
+http://cronixverso.pages.dev/*    https://cronixverso.com.br/:splat   301!
+
+# ─── URLs e slugs canônicos ──────────────────────────────────────────────────
+/artigos/:id             /artigo/:id            301
+/posts/:id               /artigo/:id            301
+/post/:id                /artigo/:id            301
+/transmissao/:id         /artigo/:id            301
+/transmissoes/:id        /artigo/:id            301
+
+# ─── SPA Fallback ─────────────────────────────────────────────────────────────
+/*    /index.html    200

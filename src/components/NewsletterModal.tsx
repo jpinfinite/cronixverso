@@ -71,12 +71,12 @@ export const NewsletterModal: React.FC = () => {
             </div>
 
             <div className="space-y-1">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-400">NEWSLETTER EXCLUSIVA</span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400">MATERIAL EXCLUSIVO EM PDF</span>
               <h3 className="font-display font-extrabold text-xl text-white">
-                Não Perca o <span className="gradient-text">Futuro da Tech</span>
+                Radar Semanal de <span className="gradient-text">Novas IAs & Prompts</span>
               </h3>
-              <p className="text-xs text-slate-400">
-                Junte-se a +45 mil engenheiros e entusiastas. Receba resumos semanais de IA, hardware e ciência.
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Junte-se a +45 mil engenheiros e pesquisadores. Receba o compilado em PDF com as novas ferramentas, benchmarks de hardware e prompts avançados toda semana.
               </p>
             </div>
 
@@ -92,7 +92,7 @@ export const NewsletterModal: React.FC = () => {
 
               <div className="flex items-center space-x-2 text-[10px] text-slate-500 uppercase tracking-widest my-2">
                 <div className="flex-1 h-px bg-white/10" />
-                <span>ou via e-mail</span>
+                <span>ou via e-mail direto</span>
                 <div className="flex-1 h-px bg-white/10" />
               </div>
 
@@ -100,7 +100,7 @@ export const NewsletterModal: React.FC = () => {
                 <input 
                   type="email"
                   required
-                  placeholder="Seu melhor e-mail..."
+                  placeholder="Seu melhor e-mail corporativo ou pessoal..."
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-[#07090e] border border-white/15 rounded-full px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
@@ -109,7 +109,7 @@ export const NewsletterModal: React.FC = () => {
                   type="submit"
                   className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-extrabold text-xs py-3 rounded-full flex items-center justify-center space-x-1.5 transition-all shadow-lg shadow-cyan-500/25"
                 >
-                  <span>Inscrever-me Gratuitamente</span>
+                  <span>Baixar Radar & Assinar Grátis</span>
                   <Send className="w-3.5 h-3.5" />
                 </button>
               </form>
