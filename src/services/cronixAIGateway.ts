@@ -13,8 +13,7 @@ class CronixAIGateway {
   private inceptionKey: string;
 
   constructor() {
-    this.inceptionKey = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_INCEPTIONLABS_API_KEY) || 
-      'sk_7c66847eb841ed2be3450cae8f415772';
+    this.inceptionKey = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_INCEPTIONLABS_API_KEY) || '';
   }
 
   public async generateText(options: AIGatewayOptions): Promise<string> {
