@@ -1,10 +1,14 @@
 /**
  * Cronixverso - Tech & Gaming Affiliate Engine
- * Shopee Link: https://s.shopee.com.br/70JRIblj7k
- * Mercado Livre Link: https://meli.la/1dvC1LN
+ * Amazon, Mercado Livre & Shopee Integration
  */
 
 export const AFFILIATE_CONFIG = {
+  amazon: {
+    storeId: 'jpinfinite-20',
+    trackingId: 'jonathapereir-20',
+    baseShortLink: 'https://link.amazon/A04GypFtx',
+  },
   shopee: {
     appId: '18320170187',
     partnerId: 'an_18320170187',
@@ -148,6 +152,13 @@ export const FEATURED_TECH_PRODUCTS: TechProduct[] = [
     imageUrl: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&auto=format&fit=crop&q=80'
   }
 ];
+
+export function getAmazonTechUrl(searchQuery?: string): string {
+  if (!searchQuery) {
+    return AFFILIATE_CONFIG.amazon.baseShortLink;
+  }
+  return `https://www.amazon.com.br/s?k=${encodeURIComponent(searchQuery)}&tag=${AFFILIATE_CONFIG.amazon.storeId}`;
+}
 
 export function getShopeeTechUrl(searchQuery?: string): string {
   if (!searchQuery) {

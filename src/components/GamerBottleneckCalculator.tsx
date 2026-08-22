@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Cpu, Monitor, Zap, AlertTriangle, CheckCircle2, ShoppingBag, ShieldCheck } from 'lucide-react';
-import { getShopeeTechUrl, getMercadoLivreTechUrl } from '../utils/affiliates';
+import { getAmazonTechUrl, getMercadoLivreTechUrl } from '../utils/affiliates';
 
 interface ProcessorOption {
   name: string;
@@ -213,13 +213,13 @@ export const GamerBottleneckCalculator: React.FC = () => {
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <a
-                href={getShopeeTechUrl(status === 'cpu_bottleneck' ? 'Ryzen 7 7800X3D' : 'RTX 4070 Super')}
+                href={getAmazonTechUrl(status === 'cpu_bottleneck' ? 'Ryzen 7 7800X3D' : 'RTX 4070 Super')}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
-                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md"
+                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-[#FF9900] hover:bg-[#FFAC1C] text-slate-950 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>Ofertas Shopee</span>
+                <span>Ofertas na Amazon</span>
               </a>
 
               <a

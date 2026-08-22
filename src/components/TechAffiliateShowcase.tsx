@@ -11,7 +11,7 @@ import {
   Search, 
   ShieldCheck 
 } from 'lucide-react';
-import { FEATURED_TECH_PRODUCTS, getShopeeTechUrl, getMercadoLivreTechUrl } from '../utils/affiliates';
+import { FEATURED_TECH_PRODUCTS, getAmazonTechUrl, getMercadoLivreTechUrl } from '../utils/affiliates';
 
 export const TechAffiliateShowcase: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('todos');
@@ -55,7 +55,7 @@ export const TechAffiliateShowcase: React.FC = () => {
           </h2>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Equipamentos de alta performance recomendados pela equipe editorial do Cronixverso com as melhores ofertas e cupons na Shopee e Mercado Livre.
+            Equipamentos de alta performance, placas de vídeo RTX, consoles PS5 / Switch e periféricos recomendados com ofertas oficiais na Amazon e Mercado Livre.
           </p>
         </div>
 
@@ -98,31 +98,31 @@ export const TechAffiliateShowcase: React.FC = () => {
 
         </div>
 
-        {/* Product Cards Grid */}
+        {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="group bg-gradient-to-b from-[#0f172a] to-[#0b1120] rounded-2xl border border-cyan-500/20 hover:border-cyan-400/60 transition-all duration-300 overflow-hidden flex flex-col justify-between hover:shadow-2xl hover:shadow-cyan-500/10"
+              className="group bg-[#0d1527]/90 rounded-2xl border border-white/5 hover:border-cyan-400/40 transition-all duration-300 overflow-hidden flex flex-col justify-between hover:shadow-2xl hover:shadow-cyan-500/10"
             >
               <div>
                 {/* Image & Badges */}
-                <div className="h-48 relative overflow-hidden bg-slate-950">
+                <div className="h-44 relative overflow-hidden bg-slate-950">
                   <img
                     src={product.imageUrl}
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1527] via-transparent to-transparent" />
                   
                   {product.badge && (
-                    <div className="absolute top-3 left-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-extrabold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md shadow-md">
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md shadow-md">
                       {product.badge}
                     </div>
                   )}
 
-                  <div className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md border border-white/10 px-2 py-0.5 rounded text-[11px] font-mono text-cyan-300 font-semibold">
+                  <div className="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md border border-white/10 px-2 py-0.5 rounded text-[11px] font-mono text-cyan-400 font-semibold">
                     {product.brand}
                   </div>
                 </div>
@@ -130,7 +130,7 @@ export const TechAffiliateShowcase: React.FC = () => {
                 {/* Body Content */}
                 <div className="p-5 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-medium text-cyan-400/90 tracking-wide uppercase">
+                    <span className="text-[11px] font-medium text-cyan-400 tracking-wide uppercase">
                       {product.categoryLabel}
                     </span>
 
@@ -141,18 +141,18 @@ export const TechAffiliateShowcase: React.FC = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                  <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
                     {product.name}
                   </h3>
 
-                  <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">
+                  <p className="text-xs text-slate-400 leading-relaxed line-clamp-3">
                     {product.description}
                   </p>
                 </div>
               </div>
 
               {/* Pricing & Dual Marketplace CTAs */}
-              <div className="p-5 pt-0 border-t border-slate-800/80 mt-4 space-y-3">
+              <div className="p-5 pt-0 border-t border-white/5 mt-4 space-y-3">
                 <div className="flex items-baseline justify-between pt-3">
                   <span className="text-[10px] uppercase tracking-wider text-slate-500">Média de Preço</span>
                   <span className="text-base font-extrabold text-white font-mono">
@@ -162,13 +162,13 @@ export const TechAffiliateShowcase: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <a
-                    href={getShopeeTechUrl(product.searchKeyword)}
+                    href={getAmazonTechUrl(product.searchKeyword)}
                     target="_blank"
                     rel="noopener noreferrer sponsored"
-                    className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-[11px] transition-all shadow-md active:scale-95 text-center"
+                    className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#FF9900] hover:bg-[#FFAC1C] text-slate-950 font-bold text-[11px] transition-all shadow-md active:scale-95 text-center"
                   >
                     <ShoppingBag className="w-3.5 h-3.5" />
-                    <span>Shopee</span>
+                    <span>Amazon</span>
                     <ExternalLink className="w-3 h-3 opacity-60" />
                   </a>
 
@@ -197,19 +197,19 @@ export const TechAffiliateShowcase: React.FC = () => {
             </div>
             <div>
               <h4 className="text-sm font-bold text-white">Procurando outro componente, jogo ou acessório gamer?</h4>
-              <p className="text-xs text-slate-400">Acesse nossas lojas oficiais na Shopee e no Mercado Livre para encontrar placas de vídeo, gabinetes, memórias e consoles com cupons e frete grátis.</p>
+              <p className="text-xs text-slate-400">Acesse nossas lojas oficiais na Amazon e no Mercado Livre para encontrar placas de vídeo, gabinetes, memórias e consoles com frete Prime e entrega rápida.</p>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
-              href={getShopeeTechUrl()}
+              href={getAmazonTechUrl()}
               target="_blank"
               rel="noopener noreferrer sponsored"
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-xs transition-all inline-flex items-center gap-2"
+              className="px-5 py-2.5 rounded-xl bg-[#FF9900] hover:bg-[#FFAC1C] text-slate-950 font-bold text-xs transition-all inline-flex items-center gap-2"
             >
               <ShoppingBag className="w-4 h-4" />
-              <span>Loja na Shopee</span>
+              <span>Ver Produtos na Amazon</span>
             </a>
 
             <a

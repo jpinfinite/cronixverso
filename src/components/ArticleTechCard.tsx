@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShoppingBag, Zap, Star, ShieldCheck, Cpu } from 'lucide-react';
-import { FEATURED_TECH_PRODUCTS, getShopeeTechUrl, getMercadoLivreTechUrl } from '../utils/affiliates';
+import { FEATURED_TECH_PRODUCTS, getAmazonTechUrl, getMercadoLivreTechUrl } from '../utils/affiliates';
 
 interface ArticleTechCardProps {
   category?: string;
@@ -74,13 +74,13 @@ export const ArticleTechCard: React.FC<ArticleTechCardProps> = ({ category, id }
               
               <div className="flex items-center gap-1.5">
                 <a
-                  href={getShopeeTechUrl(prod.searchKeyword)}
+                  href={getAmazonTechUrl(prod.searchKeyword)}
                   target="_blank"
                   rel="noopener noreferrer sponsored"
-                  className="px-2.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 text-[10px] font-bold transition-all flex items-center gap-1 shadow-sm"
+                  className="px-2.5 py-1.5 rounded-lg bg-[#FF9900] hover:bg-[#FFAC1C] text-slate-950 text-[10px] font-bold transition-all flex items-center gap-1 shadow-sm"
                 >
                   <ShoppingBag className="w-3 h-3" />
-                  <span>Shopee</span>
+                  <span>Amazon</span>
                 </a>
 
                 <a
