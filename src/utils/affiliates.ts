@@ -18,8 +18,8 @@ export const AFFILIATE_CONFIG = {
     toolId: '46691314',
     user: 'jonathapereiraoliveirasantos',
     productCode: '2PAVPD-RJ7K',
-    baseShortLink: 'https://meli.la/2SDG2D8',
-    storeUrl: 'https://www.mercadolivre.com.br/social/jonathapereiraoliveirasantos?matt_tool=46691314&matt_word=jonathapereiraoliveirasantos',
+    baseShortLink: 'https://meli.la/1R7t7gx',
+    storeUrl: 'https://meli.la/1R7t7gx',
   }
 };
 
